@@ -1,0 +1,9 @@
+<?php
+$settings['db_host'] = 'HOST';
+$settings['db_name'] = 'chevereto';
+$settings['db_user'] = 'USER';
+$settings['db_pass'] = 'PASSWORD';
+$settings['db_table_prefix'] = 'chv_';
+$settings['db_driver'] = 'mysql';
+$settings['db_pdo_attrs'] = [];
+$settings['debug_level'] = 1;
