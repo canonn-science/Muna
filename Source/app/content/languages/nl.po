@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: VERSION\n"
-"POT-Creation-Date: 2017-06-21 18:28+0000\n"
-"PO-Revision-Date: 2017-06-21 18:28+0000\n"
+"POT-Creation-Date: 2017-12-28 15:50+0000\n"
+"PO-Revision-Date: 2017-12-28 15:50+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE TEAM <EMAIL@ADDRESS>\n"
 "Language: nl\n"
@@ -87,20 +87,6 @@ msgstr "Persoonlijk"
 #: ../../../app/install/update/template/update.php:2
 msgid "Update in progress"
 msgstr "Bezig met bijwerken"
-
-#: ../../../app/install/update/updater.php:62
-#: ../../../app/themes/Peafowl/views/account/password-forgot.php:22
-#: ../../../app/lib/chevereto.js:1237 ../../../app/lib/chevereto.js:1313
-#: ../../../app/lib/chevereto.js:1391 ../../../app/lib/chevereto.js:1539
-#: ../../../app/lib/chevereto.js:1623 ../../../app/lib/chevereto.js:1668
-#: ../../../app/lib/chevereto.min.js:59 ../../../app/lib/chevereto.min.js:63
-#: ../../../app/lib/chevereto.min.js:67 ../../../app/lib/chevereto.min.js:70
-#: ../../../app/lib/chevereto.min.js:74 ../../../app/lib/chevereto.min.js:77
-#: ../../../lib/Peafowl/peafowl.js:2560 ../../../lib/Peafowl/peafowl.js:3096
-#: ../../../lib/Peafowl/peafowl.min.js:158
-#: ../../../lib/Peafowl/peafowl.min.js:195
-msgid "An error occurred. Please try again later."
-msgstr "Er is een fout opgetreden. Probeer het later nog eens."
 
 #: ../../../app/install/update/updater.php:72
 #, php-format
@@ -202,10 +188,6 @@ msgstr[1] "weergaven"
 msgid "After %n %t"
 msgstr "Na %n %t"
 
-#: ../../../app/lib/classes/class.image.php:348
-msgid "Don't autodelete"
-msgstr "Niet automatisch verwijderen"
-
 #: ../../../app/lib/functions.php:42 ../../../app/lib/functions.php:54
 msgid "minute"
 msgid_plural "minutes"
@@ -224,28 +206,37 @@ msgid_plural "days"
 msgstr[0] "dag"
 msgstr[1] "dagen"
 
+#: ../../../app/lib/functions.php:39 ../../../app/lib/functions.php:51
+msgid "week"
+msgid_plural "weeks"
+msgstr[0] "week"
+msgstr[1] "weken"
+
+#: ../../../app/lib/functions.php:38 ../../../app/lib/functions.php:50
+msgid "month"
+msgid_plural "months"
+msgstr[0] "maand"
+msgstr[1] "maanden"
+
+#: ../../../app/lib/functions.php:37 ../../../app/lib/functions.php:49
+msgid "year"
+msgid_plural "years"
+msgstr[0] "jaar"
+msgstr[1] "jaren"
+
+#: ../../../app/lib/classes/class.image.php:348
+msgid "Don't autodelete"
+msgstr "Niet automatisch verwijderen"
+
 #: ../../../app/lib/classes/class.image.php:636
 #: ../../../app/lib/classes/class.image.php:742
 msgid "Duplicated upload"
 msgstr "Dubbele upload"
 
-msgid "Error storing file in external storage server"
-msgstr "Fout tijdens het opslaan op de externe opslaglokatie."
-
-msgid "External storage has failed"
-msgstr "Externe opslag mislukt"
-
 #: ../../../app/lib/classes/class.image.php:955
 #: ../../../app/themes/Peafowl/snippets/anywhere_upload.php:76
 msgid "Private upload"
 msgstr "Privé-upload"
-
-msgid "Upload switched to local storage"
-msgstr "Upload overgeschakeld naar lokale opslag"
-
-#, php-format
-msgid "System has switched to local storage due to not enough disk capacity (%c) in the external storage server(s). The image %s has been allocated to local storage."
-msgstr "Het systeem is overgegaan naar lokale opslag omdat er niet genoeg opslagcapaciteit is (%c) op de externe opslaglokatie(s). De foto %s is opgeslagen op de lokale opslag."
 
 #: ../../../app/lib/classes/class.image.php:1231
 msgid "like"
@@ -269,9 +260,6 @@ msgstr "Recent"
 
 msgid "Trending"
 msgstr "Trending"
-
-msgid "Popular"
-msgstr "Populair"
 
 #: ../../../app/routes/route.dashboard.php:1163
 msgid "Top users"
@@ -307,6 +295,9 @@ msgstr "Oudste"
 #: ../../../app/routes/route.user.php:201
 msgid "Most viewed"
 msgstr "Meest bekeken"
+
+msgid "Popular"
+msgstr "Populair"
 
 #: ../../../app/routes/route.album.php:104
 #: ../../../app/routes/route.category.php:72
@@ -405,24 +396,6 @@ msgstr "gebruikt"
 msgid "Private profile"
 msgstr "Privéprofiel"
 
-#: ../../../app/lib/functions.php:37 ../../../app/lib/functions.php:49
-msgid "year"
-msgid_plural "years"
-msgstr[0] "jaar"
-msgstr[1] "jaren"
-
-#: ../../../app/lib/functions.php:38 ../../../app/lib/functions.php:50
-msgid "month"
-msgid_plural "months"
-msgstr[0] "maand"
-msgstr[1] "maanden"
-
-#: ../../../app/lib/functions.php:39 ../../../app/lib/functions.php:51
-msgid "week"
-msgid_plural "weeks"
-msgstr[0] "week"
-msgstr[1] "weken"
-
 #: ../../../app/lib/functions.php:43 ../../../app/lib/functions.php:55
 msgid "second"
 msgid_plural "seconds"
@@ -437,9 +410,6 @@ msgstr "%s geleden"
 #: ../../../app/lib/functions.php:67
 msgid "moments ago"
 msgstr "zojuist"
-
-msgid "System notification"
-msgstr "Systeemmelding"
 
 #: ../../../app/routes/route.dashboard.php:1223
 #: ../../../app/themes/Peafowl/header.php:407
@@ -483,10 +453,6 @@ msgid "You can apply this update directly from your %a or download it from %s an
 msgstr "Je kunt deze update direct uitvoeren via %a of deze downloaden vanaf %s en dan handmatig installeren."
 
 #, php-format
-msgid "Chevereto update available (v%s)"
-msgstr "Chevereto update beschikbaar (v%s)"
-
-#, php-format
 msgid "view on %s"
 msgstr "Bekijk op %s"
 
@@ -507,6 +473,9 @@ msgstr "Voel je vrij om mijn gedeelde foto's en albums door te bladeren."
 #: ../../../app/themes/Peafowl/views/settings.php:447
 msgid "View all my images"
 msgstr "Bekijk al mijn foto's"
+
+msgid "Plugin"
+msgstr "Plugin"
 
 #: ../../../app/loader.php:396 ../../../app/themes/Peafowl/views/404.php:6
 msgid "That page doesn't exist"
@@ -601,7 +570,7 @@ msgstr "Bevestiging nodig voor %s"
 #: ../../../app/routes/route.signup.php:216
 #, php-format
 msgid "Welcome to %s"
-msgstr "Welkom bij %s"
+msgstr "Welkom bij %s."
 
 #: ../../../app/routes/route.account.php:360
 #: ../../../app/routes/route.settings.php:327
@@ -1266,6 +1235,10 @@ msgstr "Ongeldige minimum leeftijd voor gebruiker"
 msgid "Only alphanumeric, hyphen and underscore characters are allowed"
 msgstr "Enkel alfanumeriek, koppelteken en underscore karakters zijn toegestaan"
 
+#: ../../../app/routes/route.dashboard.php:922
+msgid "Invalid URL"
+msgstr "Ongeldige URL"
+
 msgid "Routes can't be the same"
 msgstr "Routes kunnen niet hetzelfde zijn"
 
@@ -1298,10 +1271,6 @@ msgstr "Ongeldige SMTP-server"
 #: ../../../app/routes/route.dashboard.php:861
 msgid "Invalid SMTP username"
 msgstr "Ongeldige SMTP-gebruikernaam"
-
-#: ../../../app/routes/route.dashboard.php:922
-msgid "Invalid URL"
-msgstr "Ongeldige URL"
 
 #: ../../../app/routes/route.dashboard.php:960
 #, php-format
@@ -1351,11 +1320,6 @@ msgstr "IP reeds geblokkeerd."
 msgid "Upload date"
 msgstr "Upload datum"
 
-#: ../../../app/routes/route.image.php:177
-#, php-format
-msgid "%s images"
-msgstr "%s plaatjes"
-
 #: ../../../app/routes/route.image.php:185
 msgid "Image %i in %a album"
 msgstr "Afbeelding %i in %a album"
@@ -1372,13 +1336,13 @@ msgstr "Afbeelding %i gehost in %w"
 msgid "Direct links"
 msgstr "Directe link"
 
-#: ../../../app/themes/Peafowl/views/image.php:279
-msgid "Image URL"
-msgstr "Afbeelding URL"
-
 #: ../../../app/themes/Peafowl/views/image.php:285
 msgid "Image link"
 msgstr "Afbeelding link"
+
+#: ../../../app/themes/Peafowl/views/image.php:279
+msgid "Image URL"
+msgstr "Afbeelding URL"
 
 #: ../../../app/themes/Peafowl/views/image.php:291
 msgid "Thumbnail URL"
@@ -1501,50 +1465,11 @@ msgstr "Inloggen"
 msgid "Logged out"
 msgstr "Uitgelogd "
 
-#: ../../../app/routes/route.page.php:61
-#: ../../../content/pages/default/contact.php:7
-msgid "General questions/comments"
-msgstr "Algemene vragen en opmerkingen"
+msgid "Upload images"
+msgstr "Upload afbeeldingen"
 
-#: ../../../app/routes/route.page.php:62
-#: ../../../content/pages/default/contact.php:8
-msgid "DMCA complaint"
-msgstr "DMCA klacht"
-
-#: ../../../app/routes/route.page.php:71
-#: ../../../app/routes/route.settings.php:302
-#: ../../../content/pages/default/contact.php:19
-msgid "Invalid name"
-msgstr "Ongeldige naam"
-
-#: ../../../app/routes/route.page.php:74
-#: ../../../content/pages/default/contact.php:22
-msgid "Invalid message"
-msgstr "Ongeldig bericht"
-
-#: ../../../app/routes/route.page.php:77
-#: ../../../content/pages/default/contact.php:25
-msgid "Invalid subject"
-msgstr "Ongeldig onderwerp"
-
-#: ../../../app/routes/route.page.php:85
-#: ../../../content/pages/default/contact.php:33
-msgid "Invalid reCAPTCHA"
-msgstr "Ongeldige reCAPTCHA"
-
-#: ../../../app/routes/route.page.php:90
-#, php-format
-msgid "Can't submit the form: %s"
-msgstr "Kan het formulier niet verzenden: %s"
-
-#: ../../../app/routes/route.page.php:119
-msgid "Message sent. We will get in contact soon."
-msgstr "Bericht verzonden. We nemen zo spoedig mogelijk contact op."
-
-#: ../../../app/routes/route.page.php:122
-#: ../../../content/pages/default/contact.php:69
-msgid "Mail error"
-msgstr "Mail fout"
+msgid "Upload plugin"
+msgstr "Upload plugin"
 
 #: ../../../app/routes/route.search.php:120
 #, php-format
@@ -1581,6 +1506,12 @@ msgstr "Ongeldige afbeelding expiratie: %s"
 #, php-format
 msgid "An email has been sent to %s with instructions to activate this email"
 msgstr "Een e-mail is verzonden naar %s met instructies om dit e-mailadres te activeren."
+
+#: ../../../app/routes/route.page.php:71
+#: ../../../app/routes/route.settings.php:302
+#: ../../../content/pages/default/contact.php:19
+msgid "Invalid name"
+msgstr "Ongeldige naam"
 
 #: ../../../app/routes/route.settings.php:305
 msgid "Invalid website"
@@ -1629,6 +1560,11 @@ msgstr "U moet minimaal %s jaar oud zijn om deze website te gebruiken."
 #: ../../../app/themes/Peafowl/views/signup.php:63
 msgid "Create account"
 msgstr "Maak een account"
+
+#: ../../../app/themes/Peafowl/header.php:258
+#: ../../../app/themes/Peafowl/snippets/anywhere_upload.php:76
+msgid "Upload"
+msgstr "Upload"
 
 #: ../../../app/routes/route.user.php:84
 #: ../../../app/themes/Peafowl/header.php:56
@@ -1692,11 +1628,6 @@ msgstr "Willekeurig"
 #, php-format
 msgid "Notices (%s)"
 msgstr "Mededelingen (%s)"
-
-#: ../../../app/themes/Peafowl/header.php:258
-#: ../../../app/themes/Peafowl/snippets/anywhere_upload.php:76
-msgid "Upload"
-msgstr "Upload"
 
 #: ../../../app/themes/Peafowl/header.php:281
 #: ../../../app/themes/Peafowl/snippets/modal_login.php:11
@@ -1824,27 +1755,27 @@ msgstr "Wij hebben een aanvraag ontvangen om het volgende e-mailadres <a href=\"
 #: ../../../app/themes/Peafowl/mails/account-change-email.php:6
 #, php-format
 msgid "To complete the process you must <a href=\"%s\">activate your email</a>."
-msgstr "Om uw e-mailadres te activeren klikt u op <a href=\"%s\">deze link</a>."
+msgstr "Om jouw e-mailadres te activeren, klik op <a href=\"%s\">deze link</a>."
 
 #: ../../../app/themes/Peafowl/mails/account-change-email.php:8
 #: ../../../app/themes/Peafowl/mails/account-confirm.php:8
 #: ../../../app/themes/Peafowl/mails/account-password-reset.php:8
 #, php-format
 msgid "Alternatively you can copy and paste the URL into your browser: <a href=\"%s\">%s</a>"
-msgstr "U kunt ook deze link in uw adresbalk plakken: <a href=\"%s\">%s</a>"
+msgstr "Je kunt ook deze link in uw adresbalk plakken: <a href=\"%s\">%s</a>"
 
 #: ../../../app/themes/Peafowl/mails/account-change-email.php:10
 #: ../../../app/themes/Peafowl/mails/account-confirm.php:10
 #: ../../../app/themes/Peafowl/mails/account-password-reset.php:10
 msgid "If you didn't intend this just ignore this message."
-msgstr "Heeft u niet om dit bericht gevraagd dan kun je deze negeren."
+msgstr "Heb je niet om dit bericht gevraagd, dan kun je dit bericht negeren."
 
 #: ../../../app/themes/Peafowl/mails/account-change-email.php:12
 #: ../../../app/themes/Peafowl/mails/account-confirm.php:12
 #: ../../../app/themes/Peafowl/mails/account-password-reset.php:12
 #, php-format
 msgid "This request was made from IP: %s"
-msgstr "Deze aanvraag is gemaakt vanaf IP adres: %s"
+msgstr "Deze aanvraag is gedaan vanaf IP adres: %s"
 
 #: ../../../app/themes/Peafowl/mails/account-confirm.php:4
 msgid "We received a request to register the %n account at %w."
@@ -1853,7 +1784,7 @@ msgstr "Wij hebben een aanvraag ontvangen om het account %n te registreren op %w
 #: ../../../app/themes/Peafowl/mails/account-confirm.php:6
 #, php-format
 msgid "To complete the process you must <a href=\"%s\">activate your account</a>."
-msgstr "Om uw account te activeren klikt u op <a href=\"%s\">deze link</a>."
+msgstr "Om jouw account te activeren, klik op <a href=\"%s\">deze link</a>."
 
 #: ../../../app/themes/Peafowl/mails/account-password-reset.php:4
 msgid "We received a request to reset the password for your <a href=\"%u\">%n</a> account."
@@ -1866,11 +1797,11 @@ msgstr "Om uw wachtwoord te wijzigen <a href=\"%s\">volgt u deze link</a>."
 
 #: ../../../app/themes/Peafowl/mails/account-welcome.php:4
 msgid "Hi %n, welcome to %w"
-msgstr "Hallo %n, welkom bij %w"
+msgstr "Hallo %n, welkom bij %w."
 
 #: ../../../app/themes/Peafowl/mails/account-welcome.php:6
 msgid "Now that your account is ready you can enjoy uploading your images, creating albums and setting the privacy of your content as well as many more cool things that you will discover."
-msgstr "Nu dat je account klaar is, kun je foto's gaan uploaden, albums aanmaken , krijg je de mogelijkheid om de privacy-instellingen te kiezen voor je foto's en kun je verder nog veel meer leuke dingen gaan ontdekken."
+msgstr "Nu je account klaar is, kun je foto's gaan uploaden, albums aanmaken , krijg je de mogelijkheid om de privacy-instellingen te kiezen voor je foto's en kun je verder nog veel meer leuke dingen gaan ontdekken."
 
 #: ../../../app/themes/Peafowl/mails/account-welcome.php:8
 msgid "By the way, here is you very own awesome profile page: <a href=\"%u\">%n</a>. Go ahead and customize it, its yours!."
@@ -1901,26 +1832,32 @@ msgstr "voeg afbeeldingen URL's toe"
 msgid "You can also %i or %u."
 msgstr "Je kunt ook %i of %u."
 
+msgid "browse from your device"
+msgstr "vanaf uw toestel bladeren"
+
 msgid "take a picture"
 msgstr "neem een foto"
+
+msgid "You can also %i, %c or %u."
+msgstr "Je kunt ook %i, %c of %u."
 
 msgid "Edit or resize any image by clicking the image preview"
 msgstr "Bewerk of pas formaat aan van de afbeelding door op de voorvertoning te klikken"
 
-msgid "Edit or resize any image by touching the image preview"
-msgstr "Bewerk of pas formaat aan van de afbeelding door de voorvertoning aan te raken"
+msgid "Edit any image by touching the image preview"
+msgstr "Bewerk iedere afbeelding door het voorbeeld aan te raken"
 
 msgid "your computer"
 msgstr "jouw computer"
 
-msgid "image URLs"
-msgstr "afbeelding URLs"
-
-msgid "You can keep adding more images from %i or from %u."
-msgstr "Je kunt meer afbeeldingen toe blijven voegen vanaf %i of middels %u."
+msgid "You can add more images from %i or %u."
+msgstr "Je kunt meer afbeeldingen toevoegen vanaf %i of %u."
 
 msgid "your device"
 msgstr "jouw apparaat"
+
+msgid "You can add more images from %i, %c or %u."
+msgstr "Je kunt meer afbeeldingen toevoegen vanaf %i, %c of %u."
 
 msgid "Uploading %q %o"
 msgstr "Uploading %q %o"
@@ -2019,9 +1956,12 @@ msgstr "Meer informatie"
 msgid "Check the <a data-modal=\"simple\" data-target=\"failed-upload-result\">error report</a> for more information."
 msgstr "Zie het <a data-modal=\"simple\" data-target=\"failed-upload-result\">foutrapport</a> voor meer informatie!"
 
-#: ../../../app/themes/Peafowl/snippets/anywhere_upload.php:89
-msgid "max"
-msgstr "max"
+#, php-format
+msgid "Register to get %s"
+msgstr "Registreer om %s te krijgen"
+
+msgid "reset"
+msgstr "reset"
 
 #: ../../../app/themes/Peafowl/snippets/anywhere_upload.php:91
 msgid "close"
@@ -2029,6 +1969,9 @@ msgstr "sluiten"
 
 msgid "copy"
 msgstr "Kopieër"
+
+msgid "insert"
+msgstr "invoegen"
 
 #: ../../../app/themes/Peafowl/snippets/anywhere_upload.php:146
 #: ../../../app/themes/Peafowl/tpl_list_item/item_album_edit_tools.php:6
@@ -2338,6 +2281,9 @@ msgstr "Korte omschrijving van deze categorie"
 msgid "Untitled image"
 msgstr "Naamloze afbeelding"
 
+msgid "You can use wildcard * characters."
+msgstr "Je kunt wildcard * karakters gebruiken."
+
 #: ../../../app/themes/Peafowl/snippets/form_ip_ban_edit.php:9
 msgid "Expiration date"
 msgstr "Vervaldatum"
@@ -2584,9 +2530,6 @@ msgstr "Om alle functies van deze site te gebruiken moet u ingelogd zijn. Indien
 msgid "There's nothing to show here."
 msgstr "Er is hier niets te zien"
 
-msgid "Upload images"
-msgstr "Upload afbeeldingen"
-
 #: ../../../app/themes/Peafowl/snippets/user_items_editor.php:16
 #: ../../../app/themes/Peafowl/views/image.php:69
 #: ../../../app/themes/Peafowl/views/image.php:457
@@ -2646,14 +2589,32 @@ msgstr "Bevestig verwijderen"
 
 #: ../../../app/themes/Peafowl/snippets/user_items_editor.php:107
 msgid "Do you really want to remove this content? This can't be undone."
-msgstr "Wilt u deze inhoud echt verwijderen? Dit kan ongedaan gemaakt worden."
+msgstr "Wilt u deze inhoud echt verwijderen? Dit kan niet ongedaan gemaakt worden."
 
 #: ../../../app/themes/Peafowl/snippets/user_items_editor.php:111
 msgid "Do you really want to remove all the selected content? This can't be undone."
 msgstr "Wilt u deze selectie echt verwijderen? Dit kan niet ongedaan gemaakt worden."
 
+msgid "Fullscreen"
+msgstr "Volledig scherm"
+
+msgid "Exit fullscreen"
+msgstr "Sluit volledig scherm"
+
+#: ../../../app/themes/Peafowl/views/image.php:57
+msgid "Guest"
+msgstr "Bezoeker"
+
+msgid "Keyboard shortcuts"
+msgstr "Toetsenbord shortcuts"
+
+#: ../../../app/themes/Peafowl/views/image.php:85
+#: ../../../app/themes/Peafowl/views/image.php:86
+msgid "Like"
+msgstr "Waardeer"
+
 msgid "Uploaded by guest"
-msgstr "Toegevoegd door een gast"
+msgstr "Toegevoegd door een bezoeker"
 
 #: ../../../app/themes/Peafowl/tpl_list_item/image_description_owner.php:2
 #, php-format
@@ -2764,6 +2725,20 @@ msgstr "Een e-mail met instructies om uw wachtwoord te resetten is verstuurd naa
 msgid "Resend instructions"
 msgstr "Instructies opnieuw verzenden"
 
+#: ../../../app/install/update/updater.php:62
+#: ../../../app/themes/Peafowl/views/account/password-forgot.php:22
+#: ../../../app/lib/chevereto.js:1237 ../../../app/lib/chevereto.js:1313
+#: ../../../app/lib/chevereto.js:1391 ../../../app/lib/chevereto.js:1539
+#: ../../../app/lib/chevereto.js:1623 ../../../app/lib/chevereto.js:1668
+#: ../../../app/lib/chevereto.min.js:59 ../../../app/lib/chevereto.min.js:63
+#: ../../../app/lib/chevereto.min.js:67 ../../../app/lib/chevereto.min.js:70
+#: ../../../app/lib/chevereto.min.js:74 ../../../app/lib/chevereto.min.js:77
+#: ../../../lib/Peafowl/peafowl.js:2560 ../../../lib/Peafowl/peafowl.js:3096
+#: ../../../lib/Peafowl/peafowl.min.js:158
+#: ../../../lib/Peafowl/peafowl.min.js:195
+msgid "An error occurred. Please try again later."
+msgstr "Er is een fout opgetreden. Probeer het later nog eens."
+
 #: ../../../app/themes/Peafowl/views/account/password-forgot.php:24
 msgid "A previous email has been sent with instructions to reset your password. If you did not receive the instructions try checking your junk or spam filters."
 msgstr "Een eerdere e-mail is verstuurd met instructies om uw wachtwoord te resetten. Indien u deze niet heeft ontvangen, controleer dan uw spam-folder."
@@ -2847,11 +2822,6 @@ msgstr "Verwijder album"
 msgid "You like this"
 msgstr "Je waardeert dit"
 
-#: ../../../app/themes/Peafowl/views/image.php:85
-#: ../../../app/themes/Peafowl/views/image.php:86
-msgid "Like"
-msgstr "Waardeer"
-
 msgid "Upload to album"
 msgstr "Upload naar album"
 
@@ -2934,10 +2904,6 @@ msgstr "Website titel"
 msgid "Website description"
 msgstr "Website omschrijving"
 
-#: ../../../app/themes/Peafowl/views/dashboard.php:236
-msgid "Website keywords"
-msgstr "Website sleutelwoorden"
-
 #: ../../../app/themes/Peafowl/views/dashboard.php:257
 msgid "Default time zone"
 msgstr "Standaard tijdzone"
@@ -2952,6 +2918,12 @@ msgstr "Maakt het mogelijk om te zoeken op foto's, albums en gebruikers op basis
 
 msgid "Enables to browse public uploaded images. It also enables categories."
 msgstr "Staat toe om te bladeren in publiek toegevoegde afbeeldingen. Het zet ook de categorieën aan."
+
+msgid "guests"
+msgstr "bezoekers"
+
+msgid "Enables explore for guests."
+msgstr "Schakel verkennen in voor bezoekers."
 
 msgid "Enables to browse images randomly."
 msgstr "Sta toe om willekeurig afbeeldingen te bladeren."
@@ -3169,11 +3141,11 @@ msgstr "Schakel dit in indien u het uploaden van afbeeldingen wilt toestaan​�
 
 #: ../../../app/themes/Peafowl/views/dashboard.php:639
 msgid "Guest uploads"
-msgstr "Gastuploads"
+msgstr "Bezoeker uploads"
 
 #: ../../../app/themes/Peafowl/views/dashboard.php:645
 msgid "Enable this if you want to allow non registered users to upload."
-msgstr "Schakel dit in om gastuploads toe te staan"
+msgstr "Schakel dit in om bezoeker uploads toe te staan"
 
 #: ../../../app/themes/Peafowl/views/dashboard.php:1353
 msgid "Enable embed codes (uploader)"
@@ -3203,17 +3175,17 @@ msgstr "Schakel dit in indien u het uploaden van van dubbele afbeeldingen vanaf 
 
 #: ../../../app/themes/Peafowl/views/dashboard.php:649
 msgid "Enable expirable uploads"
-msgstr "Sta tijd geboden uploads toe"
+msgstr "Sta tijd gebonden uploads toe"
 
 #: ../../../app/themes/Peafowl/views/dashboard.php:655
 msgid "Enable this if you want to allow uploads with an automatic delete option."
 msgstr "Schakel dit in om uploads met automatisch verwijderen toe te staan."
 
 msgid "Auto delete guest uploads"
-msgstr "Automatisch verwijderen van uploads van gasten"
+msgstr "Automatisch verwijderen van uploads van bezoekers"
 
 msgid "Enable this if you want to force guest uploads to be auto deleted after certain time."
-msgstr "Schakel dit in om automatisch afbeeldingen van gasten te verwijderen na een bepaalde tijd."
+msgstr "Schakel dit in om automatisch afbeeldingen van bezoekers te verwijderen na een bepaalde tijd."
 
 msgid "Maximum image size"
 msgstr "Maximale afbeeldingsgrootte"
@@ -3249,6 +3221,10 @@ msgstr "Maximale upload bestandsgrootte"
 msgid "Maximum size allowed by server is %s. This limit is capped by %u and %p (%f values)."
 msgstr "Maximum grootte toegestaan door de server is %s. Deze limiet is ingesteld via %u en %p (%f waarden)."
 
+#, php-format
+msgid "Same as \"%s\" but for guests."
+msgstr "Hetzelfde als \"%s\" maar dan voor bezoekers."
+
 #: ../../../app/themes/Peafowl/views/dashboard.php:695
 msgid "Image path"
 msgstr "Pad"
@@ -3267,7 +3243,7 @@ msgstr "Opslagwijze"
 
 #: ../../../app/themes/Peafowl/views/dashboard.php:704
 msgid "Datefolders"
-msgstr "Datumfolders"
+msgstr "Datummappen"
 
 #: ../../../app/themes/Peafowl/views/dashboard.php:704
 msgid "Direct"
@@ -3334,7 +3310,7 @@ msgstr "Watermerk opties t.b.v. gebruikers"
 
 #: ../../../app/themes/Peafowl/views/dashboard.php:770
 msgid "Enable watermark on guest uploads"
-msgstr "Schakel watermerk in bij upload van gasten"
+msgstr "Schakel watermerk in bij upload van bezoekers"
 
 #: ../../../app/themes/Peafowl/views/dashboard.php:775
 msgid "Enable watermark on user uploads"
@@ -3481,6 +3457,12 @@ msgstr "Schakel registraties in"
 msgid "Enable this if you want to allow users to signup."
 msgstr "Schakel dit in om registraties toe te staan"
 
+msgid "Enable user content delete"
+msgstr "Sta gebruikers toe hun inhoud te verwijderen"
+
+msgid "Enable this if you want to allow users to delete their own content. This setting doesn't affect administrators."
+msgstr "Schakel dit in om gebruikers zelf hun eigen inhoud te verwijderen. Deze instelling heeft geen invloed op de beheerders."
+
 msgid "Minimum age required"
 msgstr "Vereiste minimum leeftijd"
 
@@ -3489,6 +3471,12 @@ msgstr "Leeg"
 
 msgid "Leave it empty to don't require a minimum age to use the website."
 msgstr "Laat leeg als er geen minimum leeftijd is vereist om de website te gebruiken."
+
+msgid "Notify on user signup"
+msgstr "Stuur kennisgeving bij registratie gebruiker"
+
+msgid "Enable this if you want to get an email notification for each new user signup."
+msgstr "Schakel dit in als je een email notificatie wilt ontvangen bij registratie van een nieuwe gebruiker."
 
 #: ../../../app/themes/Peafowl/views/dashboard.php:972
 msgid "Username routing"
@@ -3626,6 +3614,12 @@ msgstr "Standaard paginanummering"
 msgid "What pagination method should be used."
 msgstr "Wat voor paginanummering moet er gebruikt worden?"
 
+msgid "Listing viewer"
+msgstr "Lijst viewer"
+
+msgid "Enable this to use the listing viewer when clicking on an image."
+msgstr "Schakel dit in om de lijst viewer te gebruiken wanneer er op een afbeelding wordt geklikt."
+
 #: ../../../app/themes/Peafowl/views/dashboard.php:1127
 msgid "Image listing size"
 msgstr "Afbeeldingen lijstgrootte"
@@ -3641,6 +3635,15 @@ msgstr "Vast"
 #: ../../../app/themes/Peafowl/views/dashboard.php:1134
 msgid "Both methods use a fixed width but fluid method uses automatic heights."
 msgstr "Beide methodes gebruiken een vaste breedte maar de niet vaste methode gebruikt automatische hoogte."
+
+msgid "Album listing images requirement"
+msgstr "Album lijst afbeeldingen eis"
+
+msgid "explore"
+msgstr "Verken"
+
+msgid "Sets the minimum image count needed to show albums in explore."
+msgstr "Geef het minimum aantal afbeeldingen aan om albums weer te geven in verkenner."
 
 #: ../../../app/themes/Peafowl/views/dashboard.php:1140
 msgid "Listing columns number"
@@ -4315,6 +4318,16 @@ msgstr "API v1 key"
 msgid "Use this key when using the <a %s>API v1</a>."
 msgstr "Gebruik deze sleutel wanneer de <a %s>API v1</a> gebruikt wordt."
 
+msgid "Plugin route"
+msgstr "Plugin route"
+
+#, php-format
+msgid "Enable this to display plugin instructions at %u. A link to these instructions will be added to the %s menu. This setting doesn't affect administrators."
+msgstr "Schakel dit in om de plugin instructies op %u te tonen. Een link naar deze instructies wordt toegevoegd aan het %s menu. Deze instelling is niet van toepassing voor beheerders."
+
+msgid "Use this to set a custom URL for %p. Please note that you need to manually replicate %s in this URL."
+msgstr "Gebruik dit om een eigen URL in te schakelen voor %p. Let op dat het noodzakelijk is om handmatig %s toe te voegen in deze URL."
+
 #: ../../../app/themes/Peafowl/views/dashboard.php:2028
 msgid "Cookie law compliance"
 msgstr "Cookiewet naleving"
@@ -4339,10 +4352,6 @@ msgstr "Speel GIF af"
 
 msgid "Load full resolution"
 msgstr "Laadt de volledige resolutie"
-
-#: ../../../app/themes/Peafowl/views/image.php:57
-msgid "Guest"
-msgstr "Gast"
 
 #: ../../../app/themes/Peafowl/views/image.php:136
 msgid "Added to %a and categorized in %c"
@@ -4437,6 +4446,66 @@ msgstr "Voer het wachtwoord in om verder te gaan."
 
 msgid "Send"
 msgstr "Verstuur."
+
+msgid "Add image uploading to your website, blog or forum by installing our upload plugin. It provides image uploading to any website by placing a button that will allow your users to directly upload images to our service and it will automatically handle the codes needed for insertion. All features included like drag and drop, remote upload, image resizing and more."
+msgstr "Voeg het uploaden van afbeeldingen toe aan jouw website, blog of forum door onze upload plugin te installeren. Het biedt het uploaden van afbeeldingen naar elke website door een knop te plaatsen waarmee jouw gebruikers direct afbeeldingen kunnen uploaden naar onze service en het zal automatisch de codes verwerken die nodig zijn voor het invoegen. Alle functies zijn inbegrepen, zoals slepen en neerzetten, uploaden op afstand, beeldvergroting en nog veel meer."
+
+msgid "Supported software"
+msgstr "Ondersteunde software"
+
+msgid "supported software"
+msgstr "ondersteunde software"
+
+#, php-format
+msgid "The plugin works in any website with user-editable content and for %sv, it will place an upload button that will match the target editor toolbar so no extra customization is needed."
+msgstr "De plugin werkt in elke website met een gebruiker aanpasbare inhoud en voor %sv, het zal een upload knop plaatsen die overeenkomt met de doel editor werkbalk zodat er geen extra aanpassing nodig is."
+
+msgid "Add it to your website"
+msgstr "Toevoegen aan jouw website"
+
+msgid "options"
+msgstr "opties"
+
+#, php-format
+msgid "Copy and paste the plugin code into your website HTML code (preferably inside the head section). There are plenty %o to make it fit better to your needs."
+msgstr "Kopieer en plak de plugin code in jouw website HTML-code (bij voorkeur in de kopsectie). Er zijn tal van %o om het beter op jouw behoeften af te stemmen."
+
+msgid "Basic options"
+msgstr "Basis opties"
+
+msgid "Color palette"
+msgstr "Kleurenpalet"
+
+msgid "Button color scheme"
+msgstr "Knop kleurstelling"
+
+msgid "Embed codes that will be auto-inserted in editor box"
+msgstr "Ingebedde codes die automatisch in het reactievak worden geplaatst"
+
+msgid "Sibling selector"
+msgstr "Zuster keuzeschakelaar"
+
+msgid "Sibling element selector where to place the button next to"
+msgstr "Keuzeschakelaar van het zuster element waar de knop naast geplaatst moet worden"
+
+msgid "Sibling position"
+msgstr "Zusterpositie"
+
+msgid "After"
+msgstr "Na"
+
+msgid "Before"
+msgstr "Voor"
+
+msgid "Position relative to sibling element"
+msgstr "Relatieve positie tot het zuster element"
+
+msgid "Advanced options"
+msgstr "Geavanceerde opties"
+
+#, php-format
+msgid "The plugin has a large set of additional options that allow full customization. You can use custom HTML, CSS, own color palette, set observers and more. Check the %d and the plugin source to get a better idea of these advanced options."
+msgstr "De plugin heeft een grote set extra opties die volledige aanpassing mogelijk maken. Je kunt aangepaste HTML, CSS, eigen kleurenpalet, waarnemers en meer gebruiken. Controleer de %d en plugin bron om een beter beeld te krijgen van deze geavanceerde opties."
 
 #: ../../../app/themes/Peafowl/views/request-denied.php:12
 msgid "You either don't have permission to access this page or the link has expired."
@@ -4673,11 +4742,45 @@ msgstr[1] "Volgers"
 msgid "Follow"
 msgstr "Volgen"
 
+#: ../../../app/routes/route.page.php:61
+#: ../../../content/pages/default/contact.php:7
+msgid "General questions/comments"
+msgstr "Algemene vragen en opmerkingen"
+
+#: ../../../app/routes/route.page.php:62
+#: ../../../content/pages/default/contact.php:8
+msgid "DMCA complaint"
+msgstr "DMCA klacht"
+
+#: ../../../app/routes/route.page.php:74
+#: ../../../content/pages/default/contact.php:22
+msgid "Invalid message"
+msgstr "Ongeldig bericht"
+
+#: ../../../app/routes/route.page.php:77
+#: ../../../content/pages/default/contact.php:25
+msgid "Invalid subject"
+msgstr "Ongeldig onderwerp"
+
+#: ../../../app/routes/route.page.php:85
+#: ../../../content/pages/default/contact.php:33
+msgid "Invalid reCAPTCHA"
+msgstr "Ongeldige reCAPTCHA"
+
+#: ../../../app/routes/route.page.php:122
+#: ../../../content/pages/default/contact.php:69
+msgid "Mail error"
+msgstr "Mail fout"
+
 msgid "Message sent"
 msgstr "Bericht verzonden"
 
 msgid "Contact"
 msgstr "Contact"
+
+#: ../../../app/routes/route.page.php:119
+msgid "Message sent. We will get in contact soon."
+msgstr "Bericht verzonden. We nemen zo spoedig mogelijk contact op."
 
 msgid "If you want to send a message fill the form below."
 msgstr "Indien u een bericht wilt versturen, vul dan het formulier in."
@@ -4812,6 +4915,18 @@ msgstr "Nu bijwerken"
 #, javascript-format
 msgid "This website is running latest %s version"
 msgstr "Deze website gebruikt de laatste %s versie"
+
+msgid "Toggle select"
+msgstr "Selectiekeuze"
+
+msgid "Toggle flag"
+msgstr "Vlagkeuze"
+
+msgid "Previous"
+msgstr "Vorige"
+
+msgid "Next"
+msgstr "Volgende"
 
 #: ../../../app/lib/chevereto.js:2112 ../../../app/lib/chevereto.min.js:101
 msgid "Clipboard image"

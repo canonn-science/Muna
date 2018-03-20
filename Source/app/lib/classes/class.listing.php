@@ -9,7 +9,7 @@
 			<inbox@rodolfoberrios.com>
 
   Copyright (C) Rodolfo Berrios A. All rights reserved.
-  
+
   BY USING THIS SOFTWARE YOU DECLARE TO ACCEPT THE CHEVERETO EULA
   http://chevereto.com/license
 
@@ -19,78 +19,78 @@ namespace CHV;
 use G, Exception;
 
 class Listing {
-	
+
 	protected static $valid_types = ['images', 'albums', 'users'];
-	protected static $valid_sort_types = ['date', 'size', 'views', 'id', 'image_count'];
-	
+	protected static $valid_sort_types = ['date', 'size', 'views', 'id', 'image_count', 'name'];
+
 	// Set the type of list
 	public function setListing($listing) {
 		$this->listing = $listing;
 	}
-	
+
 	// Sets the type of resource being listed
 	public function setType($type) {
 		$this->type = $type;
 	}
-	
+
 	// Sets the offset (sql> LIMIT offset,limit)
 	public function setOffset($offset) {
 		$this->offset = intval($offset);
 	}
-	
+
 	public function setParamsHidden($params) {
 		$this->params_hidden = $params;
 	}
-	
+
 	// Sets the limit (sql> LIMIT offset,limit)
 	public function setLimit($limit) {
 		$this->limit = intval($limit);
 	}
-	
+
 	public function setItemsPerPage($count) {
 		$this->items_per_page = intval($count);
 	}
-	
+
 	// Sets the sort type (sql> SORT BY sort_type)
 	public function setSortType($sort_type) {
 		$this->sort_type = $sort_type == 'date' ? 'id' : $sort_type;
 	}
-	
+
 	// Sets the sort order (sql> DESC | ASC)
 	public function setSortOrder($sort_order) {
 		$this->sort_order = $sort_order;
 	}
-	
+
 	// Sets the WHERE clause
 	public function setWhere($where) {
 		$this->where = !empty($where) ? $where : NULL;
 	}
-	
+
 	// Sets the owner id of the content, usefull to add privacy
 	public function setOwner($user_id) {
 		$this->owner = $user_id;
 	}
-	
+
 	// Sets the user id of the request, usefull to add privacy
 	public function setRequester($user) {
 		$this->requester = $user;
 	}
-	
+
 	// Sets the category
 	public function setCategory($category) {
 		$this->category = (int)$category;
 	}
-	
+
 	// Sets the privacy layer of this listing
 	public function setPrivacy($privacy) {
 		$this->privacy = $privacy;
 	}
-	
+
 	// Sets the tools available for this listing (only if applies)
 	public function setTools($tools=[]) {
 		$this->tools = $tools;
 	}
-	
+
 	public function bind($param, $value, $type = null) {
 		$this->binds[] = array(
 			'param' => $param,
@@ -98,11 +98,11 @@ class Listing {
 			'type'  => $type
 		);
 	}
-	
+
 	public function getTotals($bool) {
 		$this->get_totals = (bool) $bool;
 	}
-	
+
 	/**
 	 * Do the thing
 	 * @Exeption 4xx
@@ -112,13 +112,13 @@ class Listing {
 		$this->validateInput();
 
 		$tables = DB::getTables();
-		
+
 		if(empty($this->requester)) {
 			$this->requester = Login::getUser();
 		} else if(!is_array($this->requester)) {
 			$this->requester = User::getSingle($this->requester, 'id');
 		}
-		
+
 		$joins = [
 			// Get image + storage + parent album + user uploader
 			'images' => [
@@ -132,19 +132,28 @@ class Listing {
 				'users'		=> 'LEFT JOIN '.$tables['users'].' ON '.$tables['albums'].'.album_user_id = '.$tables['users'].'.user_id'
 			]
 		];
-		
+
 		if($this->type == 'users' && $this->sort_type == 'views') {
 			$this->sort_type = 'content_views';
 		}
-		
+
 		// Params hidden handler. Introduced to avoid stupid route.json.php cloning
 		// Same level content clauses (it won't help to filter joined tables)
 		if(!is_null($this->params_hidden)) {
+
 			// hide_empty
 			$emptyTypeClauses = [
-				'albums'	=> 'album_image_count > 0',
 				'users'		=> 'user_image_count > 0 OR user_avatar_filename IS NOT NULL OR user_background_filename IS NOT NULL'
 			];
+			// Conditional album image count
+			if($this->type == 'albums') {
+				if($this->params_hidden['album_min_image_count'] > 0) {
+					$whereClauses[] = sprintf('album_image_count >= %d', $this->params_hidden['album_min_image_count']);
+				} else {
+					$emptyTypeClauses['albums'] = 'album_image_count > 0';
+				}
+
+			}
 			if(array_key_exists($this->type, $emptyTypeClauses) && $this->params_hidden['hide_empty'] == 1) {
 				$whereClauses[] = $emptyTypeClauses[$this->type];
 			}
@@ -159,12 +168,12 @@ class Listing {
 			// We are getting clauser!.. got it? nvm...
 			if(!empty($whereClauses)) {
 				$whereClauses = join(' AND ', $whereClauses);
-				$this->where = (empty($this->where) ? 'WHERE ' : ' AND ') . $whereClauses;
+				$this->where = (empty($this->where) ? 'WHERE ' : ($this->where . ' AND ')) . $whereClauses;
 			}
 		}
-		
+
 		$type_singular = DB::getFieldPrefix($this->type);
-		
+
 		// Attempt to add explicit clauses
 		if(!empty($this->where)) {
 			$where_clauses = explode(' ', str_ireplace('WHERE ', NULL, $this->where));
@@ -174,7 +183,7 @@ class Listing {
 					$field_prefix = explode('_', $clause, 2)[0]; // field prefix (singular)
 					$table = DB::getTableFromFieldPrefix($field_prefix); // image -> chv_images
 					$table_prefix = G\get_app_setting('db_table_prefix');
-					$table_key = !empty($table_prefix) ? G\str_replace_first($table_prefix, NULL, $table) : $table;					
+					$table_key = !empty($table_prefix) ? G\str_replace_first($table_prefix, NULL, $table) : $table;
 					if(array_key_exists($table_key, $tables)) {
 						$where_arr[] = $table . '.' . $clause;
 					} else {
@@ -185,6 +194,37 @@ class Listing {
 				}
 			}
 			$this->where = 'WHERE ' . implode(' ', $where_arr);
+		}
+
+		// Social stuff
+		if(version_compare(Settings::get('chevereto_version_installed'), '3.7.0', '>=')) {
+
+			// Dynamic since v3.9.0
+			$likes_join = 'LEFT JOIN '.$tables['likes'].' ON '.$tables['likes'].'.like_content_type = "' . $type_singular . '" AND '.$tables['likes'].'.like_content_id = '.$tables[$this->type].'.'.$type_singular.'_id';
+
+			if(preg_match('/like_user_id/', $this->where)) {
+				$joins[$this->type]['likes'] = $likes_join;
+			} else if($this->requester && $this->type !== 'users') {
+				$joins[$this->type]['likes'] = $likes_join . ' AND '.$tables['likes'].'.like_user_id = '.$this->requester['id'];
+			}
+
+			$follow_tpl_join = 'LEFT JOIN '.$tables['follows'].' ON '.$tables['follows'].'.%FIELD = '.$tables[$this->type].'.' . ($this->type == 'users' ? 'user' : DB::getFieldPrefix($this->type) . '_user') . '_id';
+			if(preg_match('/follow_user_id/', $this->where)) {
+				$joins[$this->type]['follows'] = strtr($follow_tpl_join, ['%FIELD' => 'follow_followed_user_id']);
+			}
+			if(preg_match('/follow_followed_user_id/', $this->where)) {
+				$joins[$this->type]['follows'] = strtr($follow_tpl_join, ['%FIELD' => 'follow_user_id']);
+			}
+		}
+
+		// Add ID reservation clause
+		if($this->type == 'images') {
+			$res_id_where = 'image_size > 0';
+			if(empty($this->where)) {
+				$this->where = 'WHERE ' . $res_id_where;
+			} else {
+				$this->where .= ' AND ' . $res_id_where;
+			}
 		}
 
 		// Add category clause
@@ -199,26 +239,31 @@ class Listing {
 
 		// Privacy layer
 		if(!$this->requester['is_admin'] && in_array($this->type, ['images', 'albums', 'users']) && ((!$this->owner || !$this->requester) || $this->owner !== $this->requester['id'])) {
-			
+
 			if(empty($this->where)) {
 				$this->where = 'WHERE ';
 			} else {
 				$this->where .= ' AND ';
 			}
-			
+
 			$nsfw_off = $this->requester ? !$this->requester['show_nsfw_listings'] : !getSetting('show_nsfw_in_listings');
-			
+
 			switch($this->type) {
 				case 'images':
 					if($nsfw_off) {
-						$this->where .= $tables['images'].'.image_nsfw = 0 AND ';
+						$nsfw_off_clause = $tables['images'].'.image_nsfw = 0';
+						if($this->requester) {
+							$this->where .= '(' . $nsfw_off_clause .  ' OR (' .  $tables['images'] . '.image_nsfw = 1 AND ' .  $tables['images'] . '.image_user_id = ' . $this->requester['id'] . ')) AND ';
+						} else {
+							$this->where .= $nsfw_off_clause . ' AND ';
+						}
 					}
 				break;
 				case 'users':
 					$this->where .= $tables['users'].'.user_is_private = 0';
 				break;
 			}
-			
+
 			if($this->type !== 'users') {
 				if(getSetting('website_privacy_mode') == 'public' || $this->privacy == 'private_but_link' || getSetting('website_content_privacy_mode') == 'default') {
 					$this->where .= '(' . $tables['albums'].'.album_privacy NOT IN';
@@ -231,24 +276,23 @@ class Listing {
 					$this->where .= (!$this->requester ? ' IS NULL' : '='.$this->requester['id']) . ')';
 				} else {
 					$injected_requester = !$this->requester['id'] ? 0 : $this->requester['id'];
-					$this->where .= '(' . $tables['albums'].'.album_user_id = '.$injected_requester;				
+					$this->where .= '(' . $tables['albums'].'.album_user_id = '.$injected_requester;
 					$this->where .= $this->type == 'albums' ? ')' : (' OR ' . $tables['images'].'.image_user_id = '.$injected_requester . ')');
 				}
 			}
-			
-			
+
 		}
-		
+
 		if(!empty($this->where)) {
 			$this->where = "\n" . $this->where;
 		}
-		
+
 		$order_by = "\n" . 'ORDER BY ' . DB::getTableFromFieldPrefix($type_singular) . '.' . $type_singular . '_' . $this->sort_type . ' ' . strtoupper($this->sort_order);
-		
+
 		$limit = "\n" . 'LIMIT ' . $this->offset . ',' . ($this->limit + 1);
 
 		$base_table = $tables[$this->type];
-		
+
 		// Normal query
 		if(empty($joins[$this->type])) {
 			$query = 'SELECT * FROM ' . $base_table;
@@ -267,7 +311,7 @@ class Listing {
 				reset($joins);
 				$join_tables = [key($joins)];
 			}
-			
+
 			$join = NULL;
 			foreach($join_tables as $join_table) {
 				if(!empty($joins[$this->type][$join_table])) {
@@ -275,27 +319,25 @@ class Listing {
 					unset($joins[$this->type][$join_table]);
 				}
 			}
-			
+
 			// Get rid of the original Exif data (for listings)
 			$null_db = $this->type == 'images' ? ', NULL as image_original_exifdata ' : NULL;
-			
+
 			$query = 'SELECT * ' . $null_db . 'FROM (SELECT * FROM ' . $base_table . $join . $this->where . $order_by . $limit . ') ' . $base_table;
 			if(!empty($joins[$this->type])) {
 				$query .=  "\n" . implode("\n", $joins[$this->type]);
 			}
 			$query .= $order_by;
 		}
-		
+
 		try {
 			$db = DB::getInstance();
 			$db->query($query);
-
 			if(is_array($this->binds)) {
 				foreach($this->binds as $bind) {
 					$db->bind($bind['param'], $bind['value'], $bind['type']);
 				}
 			}
-			
 			$this->output = $db->fetchAll();
 			$this->output_count = $db->rowCount();
 			$this->has_page_next = $db->rowCount() > $this->limit;
@@ -304,7 +346,6 @@ class Listing {
 			}
 			$this->output = G\safe_html($this->output);
 			$this->nsfw = FALSE;
-			
 			$this->output_assoc = [];
 			$formatfn = 'CHV\\' . ucfirst(substr($this->type, 0, -1));
 			foreach($this->output as $k => $v) {
@@ -314,18 +355,16 @@ class Listing {
 					$this->nsfw = TRUE;
 				}
 			}
-			
 			$this->sfw = !$this->nsfw;
-			
 			$this->has_page_prev = $this->offset > 0;
-			
+			G\handler::setCond('show_viewer_zero', isset($_REQUEST['viewer']));
 		} catch(Exception $e) {
 			throw new ListingException($e->getMessage(), 400);
 		}
-		
+
 		// Get album slices and stuff
 		if($this->type == 'albums' and $this->output) {
-			
+
 			$album_slice_qry_tpl = 'SELECT * FROM ' . $tables['images'] . ' LEFT JOIN ' . $tables['storages'] . ' ON ' . $tables['images'] . '.image_storage_id = ' . $tables['storages'] . '.storage_id WHERE ' . $tables['images'] . '.image_album_id=%ALBUM_ID% ORDER BY ' . $tables['images'] . '.image_id ASC LIMIT 0,5';
 			$albums_slice_qry_arr = [];
 			$albums_mapping = [];
@@ -340,9 +379,9 @@ class Listing {
 				// Album mapping
 				$albums_mapping[$album['album_id']] = $k;
 			}
-			
+
 			$albums_slice_qry = '(' . implode(') ' . "\n" . 'UNION ALL ' . "\n" . '(', $albums_slice_qry_arr) . ')';
-			
+
 			try {
 				$db->query($albums_slice_qry);
 				$albums_slice = $db->fetchAll();
@@ -360,17 +399,9 @@ class Listing {
 			}
 
 		}
-		
-		// Get user counts
-		/*if($this->type == 'users') {
-			if($this->sort_type == 'image_count') {
-				G\key_asort($this->output, 'user_image_count');
-				$this->output = $this->sort_order == 'desc' ? array_reverse($this->output) : $this->output;
-			}
-		}*/
-		
+
 	}
-	
+
 	public static function getTabs($args=[], $expanded=FALSE) {
 		$default = [
 			'list'		=> TRUE,
@@ -380,10 +411,10 @@ class Listing {
 			'tools'		=> TRUE,
 			'tools_available' => [],
 		];
-        $args = array_merge($default, $args);
-		// Fix some stuff
+    $args = array_merge($default, $args);
+		// Fix lazy basenames
 		if(strpos($args['basename'], G\get_base_url()) !== FALSE) {
-			$args['basename'] = G\str_replace_first(G\get_base_url(), NULL, $args['basename']);
+			$args['basename'] = G\get_base_url() == $args['basename'] ? NULL : G\str_replace_first(G\get_base_url() .'/', NULL, $args['basename']);
 		}
 		// Semantics -> trending | popular | recent
 		$semantics = [
@@ -398,10 +429,10 @@ class Listing {
 				'sort'		=> 'views_desc',
 			],
 		];
-		
+
 		// Criteria -> images | albums | users
 		// Criteria -> [CONTENT TABS]
-		$criterias = [ 
+		$criterias = [
 			'top-users'		=> [
 				'label'		=> _s('Top users'),
 				'sort'		=> 'image_count_desc',
@@ -423,6 +454,24 @@ class Listing {
 				'content'	=> 'all',
 			],
 		];
+		if(Settings::get('enable_likes')) {
+			$semantics['popular'] = [
+				'label'	=> _s('Popular'),
+				'content'=> 'all',
+				'sort'	=> 'likes_desc',
+			];
+			$criterias['most-liked'] = [
+				'label'	=> _s('Most liked'),
+				'sort'	=> 'likes_desc',
+				'content'=> 'all',
+			];
+		}
+		$criterias['az-asc'] = [
+			'label'		=> 'AZ',
+			'sort'		=> 'name_asc',
+			'content'	=> 'albums',
+		];
+
 		$listings = [
 			'explore'	=> [
 				'label'		=> _s('Explore'),
@@ -449,12 +498,12 @@ class Listing {
 			'albums'	=> [
 				'label'		=> _n('Album', 'Albums', 2),
 				'content'	=> 'albums',
-			],	
+			],
 		];
 		$listings = array_merge($listings, $semantics);
-				
+
 		$parameters = $listings[$args['listing']];
-		
+
 		if(is_array($args['exclude_criterias'])) {
 			foreach($args['exclude_criterias'] as $exclude) {
 				if(array_key_exists($exclude, $criterias)) {
@@ -462,10 +511,10 @@ class Listing {
 				}
 			}
 		}
-		
+
 		// Content -> most recent | oldest | most viewed | most liked
 		// Content -> [CRITERIA TABS]
-		$contents = [ 
+		$contents = [
 			'images' => [
 				'label' => _n('Image', 'Images', 2),
 			],
@@ -477,11 +526,10 @@ class Listing {
 			]
 		];
 		$i = 0;
-		$hasCurrent = FALSE;
 		$currentKey = NULL;
-		
+
 		foreach(($parameters['content'] == 'all' ? $contents : ($parameters['semantic'] ? $semantics : $criterias)) as $k => $v) {
-			
+
 			if($parameters['content'] == 'all') {
 				$content = $k;
 				$id = 'list-' . $args['listing'] . '-' . $content; // list-popular-images
@@ -516,8 +564,9 @@ class Listing {
 					unset($params[$kk]);
 				}
 			}
-			$query_append = ($basename ? '/' : NULL) . '?' . http_build_query($params);
-			
+			$http_build_query = http_build_query($params);
+			$url = G\get_base_url($basename) . '/?' . $http_build_query;
+
 			$current = isset($args['REQUEST']['sort']) ? $args['REQUEST']['sort'] == $v['sort'] : FALSE;
 			if($i==0 && !$current) {
 				$current = !$args['REQUEST']['sort'];
@@ -527,29 +576,33 @@ class Listing {
 			}
 
 			$tab = [
-                'list'				=> (bool) $args['list'],
+        'list'				=> (bool) $args['list'],
 				'tools'				=> $content == 'users' ? FALSE : (bool) $args['tools'],
 				'tools_available'	=> $args['tools_available'],
 				'label'				=> $v['label'],
-				'id'				=> $id,
-				'params'			=> G\str_replace_first('/?', NULL, $query_append),
+				'id'					=> $id,
+				'params'			=> $http_build_query, // Es que como explicar la magia que tiene su manera de enamorar...
 				'current'			=> (bool) $current,
 				'type'				=> $content,
-				'url'				=> G\get_base_url($basename . $query_append)
+				'url'					=> $url
 			];
+
+			if($args['tools_available'] && !G\Handler::getCond('allowed_to_delete_content') && array_key_exists('delete', $args['tools_available'])) {
+				unset($args['tools_available']['delete']);
+			}
 			if($args['tools_available'] == NULL) {
 				unset($tab['tools_available']);
 			}
-			
+
 			if($args['params_hidden']) {
 				$tab['params_hidden'] = http_build_query($args['params_hidden']);
 			}
-			
+
 			$tabs[] = $tab;
-			unset($id, $params, $basename, $query_append, $content, $current);
+			unset($id, $params, $basename, $http_build_query, $content, $current);
 			$i++;
 		}
-		
+
 		if(is_null($currentKey)) {
 			if($parameters['content'] == 'all') {
 				foreach($tabs as $k => &$v) {
@@ -564,36 +617,36 @@ class Listing {
 				$tabs[0]['current'] = TRUE;
 			}
 		}
-		
+
 		if($expanded) {
 			return ['tabs' => $tabs, 'currentKey' => $currentKey];
 		}
-		
+
 		return $tabs;
 	}
-	
+
 	/**
 	 * validate_input aka "first stage validation"
 	 * This checks for valid input source data before exec
 	 * @Exception 1XX
 	 */
 	protected function validateInput() {
-		
+
 		self::setValidSortTypes();
-		
+
 		if(empty($this->offset)) {
 			$this->offset = 0;
 		}
-		
+
 		// Missing values
 		$check_missing = ['type', 'offset', 'limit', 'sort_type', 'sort_order'];
 		missing_values_to_exception($this, 'CHV\ListingException', $check_missing, 100);
-		
+
 		// Validate type
 		if(!in_array($this->type, self::$valid_types)) {
 			throw new ListingException('Invalid $type "'.$this->type.'"', 110);
 		}
-		
+
 		// Validate limits
 		if($this->offset == 0 && $this->limit == 0) {
 			throw new ListingException('$offset and $limit are equal to 0 (zero)', 120);
@@ -601,56 +654,59 @@ class Listing {
 		if($this->offset < 0 || $this->limit < 0) {
 			throw new ListingException('Limit integrity violation', 121);
 		}
-		
+
 		// Validate sort type
 		if(!in_array($this->sort_type, self::$valid_sort_types)) {
 			throw new ListingException('Invalid $sort_type "'.$this->sort_type.'"', 130);
 		}
-		
+
 		// Validate sort order
 		if(!preg_match('/^(asc|desc)$/', $this->sort_order)) {
 			throw new ListingException('Invalid $sort_order "'.$this->sort_order.'"', 140);
 		}
-		
+
 	}
-	
+
 	// Handler for all those switcheable sort options (based on on/off settings)
 	protected static function setValidSortTypes() {
+		if(getSetting('enable_likes') AND !in_array('likes', self::$valid_sort_types)) {
+			array_push(self::$valid_sort_types, 'likes');
+		}
 	}
-	
+
 	public function htmlOutput($tpl_list=NULL) {
-		
+
 		if(!is_array($this->output)) {
 			return;
 		}
-		
+
 		if(is_null($tpl_list)) {
 			$tpl_list = $this->type ?: 'images';
 		}
-		
+
 		$directory = new \RecursiveDirectoryIterator(G_APP_PATH_THEME . 'tpl_list_item/');
 		$iterator = new \RecursiveIteratorIterator($directory);
 		$regex  = new \RegexIterator($iterator, '/^.+\.php$/i', \RecursiveRegexIterator::GET_MATCH);
-		
-		$filelist = array();
+
+		$list_item_template = [];
+
 		foreach($regex as $file) {
-			$filelist = array_merge($filelist, $file);
-		}
-		
-		$list_item_template = array();
-		foreach($filelist as $file) {
-			$file = G\forward_slash($file);
-			$key = preg_replace('/\\.[^.\\s]{3,4}$/', '', str_replace(G_APP_PATH_THEME, "", $file));
+			$file = G\forward_slash($file[0]);
+			$key = preg_replace('/\\.[^.\\s]{3,4}$/', '', str_replace(G_APP_PATH_THEME, NULL, $file));
+			$override_file = G\str_replace_first(G_APP_PATH_THEME, G_APP_PATH_THEME . 'overrides/', $file);
+			if(is_readable($override_file)) {
+				$file = $override_file;
+			}
 			ob_start();
 			require($file);
 			$file_get_contents = ob_get_contents();
 			ob_end_clean();
 			$list_item_template[$key] = $file_get_contents;
 		}
-		
+
 		$html_output = '';
 		$tpl_list = preg_replace('/s$/', '', $tpl_list);
-		
+
 		foreach($this->output as $row) {
 			switch($tpl_list) {
 				case 'image':
@@ -668,24 +724,24 @@ class Listing {
 					$Class = 'CHV\User';
 				break;
 			}
-			
+
 			$item = $Class::formatArray($row);
-			
+
 			$tools = $this->tools ?: NULL;
-			
+
 			if(function_exists('get_peafowl_item_list')) {
 				$render = 'get_peafowl_item_list';
 			} else {
 				$render = 'CHV\Render\get_peafowl_item_list';
 			}
-			
+
 			$html_output .= $render($tpl_list, $item, $list_item_template, Login::getUser()['id'], $tools);
 
 		}
-		
+
 		return $html_output;
 	}
-	
+
 	public static function getAlbumHtml($album_id, $template='user/albums') {
 		try {
 			$album = new Listing;
@@ -702,35 +758,35 @@ class Listing {
 			throw new ListingException($e->getMessage(), 400);
 		}
 	}
-	
+
 	public static function getParams($json_call=false) {
-		
+
 		self::setValidSortTypes();
-		
+
 		$items_per_page = getSetting('listing_items_per_page');
 		$listing_pagination_mode = getSetting('listing_pagination_mode');
-		
+
 		$params = [];
 		$params['items_per_page'] = $items_per_page;
-		
+
 		if(!$json_call and $listing_pagination_mode == 'endless') {
 			$params['page'] = max(intval($_REQUEST['page']), 1);
 			$params['limit'] = $params['items_per_page'] * $params['page'];
-			$params['offset'] = 0;	
-			
+			$params['offset'] = 0;
+
 			// Switch endless to classic if we are dealing with large listings (from GET)
 			if($params['limit'] > getSetting('listing_safe_count')) {
 				$listing_pagination_mode = 'classic';
 				Settings::setValue('listing_pagination_mode', $listing_pagination_mode );
 			}
 		}
-		
+
 		if(isset($_REQUEST['pagination']) or $listing_pagination_mode == 'classic') { // Static single page display
 			$params['page'] = $_REQUEST['page'] ? intval($_REQUEST['page']) - 1 : 0;
 			$params['limit'] = $params['items_per_page'];
 			$params['offset'] = $params['page']*$params['limit'];
 		}
-		
+
 		if($json_call) {
 			$params = array_merge($params, [
 				'page'	=> $_REQUEST['page'] ? $_REQUEST['page'] - 1 : 0,
@@ -738,20 +794,20 @@ class Listing {
 			]);
 			$params['offset'] = $params['page'] * $params['limit'] + ($_REQUEST['offset'] ? $_REQUEST['offset'] : 0);
 		}
-		
+
 		$default_sort = [
 			0 => 'date',
 			1 => 'desc'
 		];
-		
+
 		preg_match('/(.*)_(asc|desc)/', $_REQUEST['sort'], $sort_matches);
 		$params['sort'] = array_slice($sort_matches, 1);
-		
+
 		// Empty sort
 		if(count($params['sort']) !== 2) {
 			$params['sort'] = $default_sort;
 		}
-		
+
 		// Check sort type
 		if(!in_array($params['sort'][0], self::$valid_sort_types)) {
 			$params['sort'][0] = $default_sort[0];
@@ -760,11 +816,11 @@ class Listing {
 		if(!in_array($params['sort'][1], ['asc', 'desc'])) {
 			$params['sort'][1] = $default_sort[1];
 		}
-		
+
 		return $params;
-		
+
 	}
-	
+
 }
 
 class ListingException extends Exception {}

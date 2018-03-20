@@ -1,8 +1,8 @@
 <?php
 $translation_header = array (
   'Project-Id-Version' => 'VERSION',
-  'POT-Creation-Date' => '2017-05-23 17:56+0000',
-  'PO-Revision-Date' => '2017-05-23 17:56+0000',
+  'POT-Creation-Date' => '2018-02-28 17:59+0000',
+  'PO-Revision-Date' => '2018-02-28 17:59+0000',
   'Last-Translator' => 'FULL NAME <EMAIL@ADDRESS>',
   'Language-Team' => 'LANGUAGE TEAM <EMAIL@ADDRESS>',
   'Language' => 'de',
@@ -13,9 +13,7 @@ $translation_header = array (
 );
 $translation_plural = array (
   'nplurals' => 2,
-  'plural' => '(n != 1)',
-  'formula' => '($n != 1)',
-  'function' => '$index = (int)(($n != 1)); return ($index < 2) ? $index : 2 - 1;',
+  'function' => '($n != 1)',
 );
 $translation_table = [
 	"Invalid email" => [
@@ -56,9 +54,6 @@ $translation_table = [
 	],
 	"Update in progress" => [
 		0 => "Update in Arbeit...",
-	],
-	"An error occurred. Please try again later." => [
-		0 => "Ein Fehler ist aufgetreten. Bitte versuchen Sie es später noch einmal.",
 	],
 	"Missing %s file" => [
 		0 => "Datei %s fehlt",
@@ -121,9 +116,6 @@ $translation_table = [
 	"After %n %t" => [
 		0 => "Nach %n %t",
 	],
-	"Don't autodelete" => [
-		0 => "Automatisches Löschen deaktivieren",
-	],
 	"minute" => [
 		0 => "Minute",
 		1 => "Minuten",
@@ -136,23 +128,26 @@ $translation_table = [
 		0 => "Tag",
 		1 => "Tagen",
 	],
+	"week" => [
+		0 => "Woche",
+		1 => "Wochen",
+	],
+	"month" => [
+		0 => "Monat",
+		1 => "Monaten",
+	],
+	"year" => [
+		0 => "Jahr",
+		1 => "Jahren",
+	],
+	"Don't autodelete" => [
+		0 => "Auto-Löschen deaktivieren",
+	],
 	"Duplicated upload" => [
 		0 => "Doppelt hochgeladen",
 	],
-	"Error storing file in external storage server" => [
-		0 => "Fehler beim Speichern der Datei auf den externen Datenspeicher.",
-	],
-	"External storage has failed" => [
-		0 => "Speichern auf dem externen Datenspeicher fehlgeschlagen",
-	],
 	"Private upload" => [
 		0 => "Privater Upload",
-	],
-	"Upload switched to local storage" => [
-		0 => "Upload wurde auf lokalen Datenspeicher umgestellt",
-	],
-	"System has switched to local storage due to not enough disk capacity (%c) in the external storage server(s). The image %s has been allocated to local storage." => [
-		0 => "Das Bild %s wurde aufgrund von nicht ausreichendem Speicherplatz (%c) auf dem externen Speicherserver automatisch auf dem lokalen Server gespeichert.",
 	],
 	"like" => [
 		0 => "Like",
@@ -168,9 +163,6 @@ $translation_table = [
 	"Trending" => [
 		0 => "Im Trend",
 	],
-	"Popular" => [
-		0 => "Beliebt",
-	],
 	"Top users" => [
 		0 => "Top-Benutzer",
 	],
@@ -182,6 +174,9 @@ $translation_table = [
 	],
 	"Most viewed" => [
 		0 => "Meistgesehen",
+	],
+	"Popular" => [
+		0 => "Beliebt",
 	],
 	"Most liked" => [
 		0 => "Beliebt",
@@ -240,18 +235,6 @@ $translation_table = [
 	"Private profile" => [
 		0 => "Privates Profil",
 	],
-	"year" => [
-		0 => "Jahr",
-		1 => "Jahren",
-	],
-	"month" => [
-		0 => "Monat",
-		1 => "Monaten",
-	],
-	"week" => [
-		0 => "Woche",
-		1 => "Wochen",
-	],
 	"second" => [
 		0 => "Sekunde",
 		1 => "Sekunden",
@@ -260,10 +243,7 @@ $translation_table = [
 		0 => "Vor %s",
 	],
 	"moments ago" => [
-		0 => "wenigen Momenten",
-	],
-	"System notification" => [
-		0 => "System-Benachrichtigung",
+		0 => "Vor wenigen Momenten",
 	],
 	"Dashboard" => [
 		0 => "Dashboard",
@@ -295,9 +275,6 @@ $translation_table = [
 	"You can apply this update directly from your %a or download it from %s and then manually install it." => [
 		0 => "Sie können dieses Update direkt aus Ihrem %a starten oder es manuell von %s herunterladen und installieren.",
 	],
-	"Chevereto update available (v%s)" => [
-		0 => "Chevereto-Update verfügbar (v%s)",
-	],
 	"view on %s" => [
 		0 => "Auf %s ansehen",
 	],
@@ -312,6 +289,9 @@ $translation_table = [
 	],
 	"View all my images" => [
 		0 => "Alle meine Bilder anzeigen",
+	],
+	"Plugin" => [
+		0 => "Plugin",
 	],
 	"That page doesn't exist" => [
 		0 => "Diese Seite existiert nicht",
@@ -528,7 +508,7 @@ $translation_table = [
 		0 => "Externe Dienste",
 	],
 	"IP bans" => [
-		0 => "IP-Banne",
+		0 => "IP-Sperren",
 	],
 	"Additional settings" => [
 		0 => "Erweiterte Einstellungen",
@@ -770,6 +750,9 @@ $translation_table = [
 	"Only alphanumeric, hyphen and underscore characters are allowed" => [
 		0 => "Nur alphanumerische Zeichen, Bindestrich und Unterstriche sind erlaubt",
 	],
+	"Invalid URL" => [
+		0 => "Ungültige URL",
+	],
 	"Routes can't be the same" => [
 		0 => "Die Pfade dürfen nicht gleich sein",
 	],
@@ -797,9 +780,6 @@ $translation_table = [
 	"Invalid SMTP username" => [
 		0 => "Ungültiger SMTP-Benutzername",
 	],
-	"Invalid URL" => [
-		0 => "Ungültige URL",
-	],
 	"This URL key is already being used by another page (ID %s)" => [
 		0 => "Dieser URL-Schlüssel wird bereits für eine andere Seite genutzt (ID %s)",
 	],
@@ -822,16 +802,13 @@ $translation_table = [
 		0 => "Uploader-IP",
 	],
 	"Ban IP" => [
-		0 => "IP-Adresse bannen",
+		0 => "IP-Adresse sperren",
 	],
 	"IP already banned" => [
-		0 => "IP-Adresse wurde bereits gebannt",
+		0 => "IP-Adresse wurde bereits gesperrt",
 	],
 	"Upload date" => [
 		0 => "Upload-Datum",
-	],
-	"%s images" => [
-		0 => "%s Bilder",
 	],
 	"Image %i in %a album" => [
 		0 => "Bild %i in %a Album",
@@ -845,11 +822,11 @@ $translation_table = [
 	"Direct links" => [
 		0 => "Direkt-Link",
 	],
-	"Image URL" => [
-		0 => "Originalbild-URL",
-	],
 	"Image link" => [
 		0 => "Betrachter-URL",
+	],
+	"Image URL" => [
+		0 => "Originalbild-URL",
 	],
 	"Thumbnail URL" => [
 		0 => "Vorschaubild-URL",
@@ -873,7 +850,7 @@ $translation_table = [
 		0 => "Login notwendig",
 	],
 	"IP address already banned" => [
-		0 => "IP-Adresse wurde bereits gebannt",
+		0 => "IP-Adresse wurde bereits gesperrt",
 	],
 	"Missing values" => [
 		0 => "Fehlende Werte",
@@ -932,32 +909,11 @@ $translation_table = [
 	"Logged out" => [
 		0 => "Abmeldung erfolgreich",
 	],
-	"General questions/comments" => [
-		0 => "Allgemeine Fragen / Kommentare",
+	"Upload images" => [
+		0 => "Bilder hochalden",
 	],
-	"DMCA complaint" => [
-		0 => "Urheberrechtsverletzung",
-	],
-	"Invalid name" => [
-		0 => "Ungültiger Name",
-	],
-	"Invalid message" => [
-		0 => "Ungültige Nachricht",
-	],
-	"Invalid subject" => [
-		0 => "Ungültiger Titel",
-	],
-	"Invalid reCAPTCHA" => [
-		0 => "Ungültiges reCAPTCHA",
-	],
-	"Can't submit the form: %s" => [
-		0 => "\"%s\" kann nicht übertragen werden",
-	],
-	"Message sent. We will get in contact soon." => [
-		0 => "Nachricht gesendet. Wir werden in Kürze mit Ihnen Kontakt aufnehmen!",
-	],
-	"Mail error" => [
-		0 => "E-Mail Fehler",
+	"Upload plugin" => [
+		0 => "Upload-Plugin",
 	],
 	"Image search results for %s" => [
 		0 => "Bild-Suchergebnisse für %s",
@@ -982,6 +938,9 @@ $translation_table = [
 	],
 	"An email has been sent to %s with instructions to activate this email" => [
 		0 => "Es wurde eine E-Mail an %s mit Anweisungen zur Aktivierung versendet.",
+	],
+	"Invalid name" => [
+		0 => "Ungültiger Name",
 	],
 	"Invalid website" => [
 		0 => "Ungültige Internetseite",
@@ -1013,6 +972,9 @@ $translation_table = [
 	"Create account" => [
 		0 => "Konto erstellen",
 	],
+	"Upload" => [
+		0 => "Upload",
+	],
 	"%s's Images" => [
 		0 => "%ss Bilder",
 	],
@@ -1026,7 +988,7 @@ $translation_table = [
 		0 => "Von %s gelikt",
 	],
 	"Liked" => [
-		0 => "Liked",
+		0 => "Gefällt mir",
 	],
 	"Followers" => [
 		0 => "Followers",
@@ -1051,9 +1013,6 @@ $translation_table = [
 	],
 	"Notices (%s)" => [
 		0 => "Anmerkungen (%s)",
-	],
-	"Upload" => [
-		0 => "Upload",
 	],
 	"Sign in with another account" => [
 		0 => "Mit externen Diensten anmelden",
@@ -1149,34 +1108,40 @@ $translation_table = [
 		0 => "Bilder zum Hochladen auswählen",
 	],
 	"browse from your computer" => [
-		0 => "Dursuchen Sie Ihren Computer",
+		0 => "Ihren Computer durchsuchen",
 	],
 	"add image URLs" => [
-		0 => "Image-URLs hinzufügen",
+		0 => "Bild-URLs",
 	],
 	"You can also %i or %u." => [
 		0 => "Sie können auch %i oder %u.",
 	],
+	"browse from your device" => [
+		0 => "Durchsuchen Sie Ihr Gerät",
+	],
 	"take a picture" => [
 		0 => "ein Foto aufnehmen",
+	],
+	"You can also %i, %c or %u." => [
+		0 => "Sie können auch %i, %c oder %u.",
 	],
 	"Edit or resize any image by clicking the image preview" => [
 		0 => "Bearbeiten oder skalieren Sie ein Bild, in dem Sie auf die Vorschau klicken",
 	],
-	"Edit or resize any image by touching the image preview" => [
-		0 => "Bearbeiten oder skalieren Sie ein Bild, in dem Sie die Vorschau berühren",
+	"Edit any image by touching the image preview" => [
+		0 => "Bearbeiten Sie ein Bild, in dem Sie die Vorschau berühren",
 	],
 	"your computer" => [
-		0 => "Ihr Computer",
+		0 => "Ihrem Computer",
 	],
-	"image URLs" => [
-		0 => "Bild URLs",
-	],
-	"You can keep adding more images from %i or from %u." => [
+	"You can add more images from %i or %u." => [
 		0 => "Sie können mehr Bilder von %i oder %u hinzufügen.",
 	],
 	"your device" => [
 		0 => "Ihre Gerät",
+	],
+	"You can add more images from %i, %c or %u." => [
+		0 => "Sie können mehr Bilder von %i, %c oder %u hinzufügen.",
 	],
 	"Uploading %q %o" => [
 		0 => "Lade %q %o hoch",
@@ -1250,14 +1215,20 @@ $translation_table = [
 	"Check the <a data-modal=\"simple\" data-target=\"failed-upload-result\">error report</a> for more information." => [
 		0 => "Überprüfen Sie den <a data-modal=\"simple\" data-target=\"failed-upload-result\">Fehlerbericht</a> für mehr Informationen.",
 	],
-	"max" => [
-		0 => "Maximal",
+	"Register to get %s" => [
+		0 => "Registrieren um %s zu verwenden",
+	],
+	"reset" => [
+		0 => "Zurücksetzen",
 	],
 	"close" => [
 		0 => "Schließen",
 	],
 	"copy" => [
 		0 => "Kopieren",
+	],
+	"insert" => [
+		0 => "Einfügen",
 	],
 	"Edit" => [
 		0 => "Bearbeiten",
@@ -1452,6 +1423,9 @@ $translation_table = [
 	"Untitled image" => [
 		0 => "Unbetiteltes Bild",
 	],
+	"You can use wildcard * characters." => [
+		0 => "Sie können Platzhalter (*) verwenden.",
+	],
 	"Expiration date" => [
 		0 => "Ablaufdatum",
 	],
@@ -1462,7 +1436,7 @@ $translation_table = [
 		0 => "Beispiel",
 	],
 	"Until which date this IP address will be banned? Leave it empty for no expiration." => [
-		0 => "Bis wann soll die IP-Adresse gebannt werden? Bei keiner Eingabe wird kein Ablaufdatum festgelegt.",
+		0 => "Bis wann soll die IP-Adresse gesperrt werden? Bei keiner Eingabe wird kein Ablaufdatum festgelegt.",
 	],
 	"Message" => [
 		0 => "Nachricht",
@@ -1620,9 +1594,6 @@ $translation_table = [
 	"There's nothing to show here." => [
 		0 => "Keine Inhalte vorhanden.",
 	],
-	"Upload images" => [
-		0 => "Bilder hochalden",
-	],
 	"Edit image details" => [
 		0 => "Bearbeite Bilddetails",
 	],
@@ -1667,6 +1638,21 @@ $translation_table = [
 	],
 	"Do you really want to remove all the selected content? This can't be undone." => [
 		0 => "Wollen Sie die markierten Inhalte wirklich löschen? Dies kann nicht rückgängig gemacht werden.",
+	],
+	"Fullscreen" => [
+		0 => "Vollbild",
+	],
+	"Exit fullscreen" => [
+		0 => "Vollbild verlassen",
+	],
+	"Guest" => [
+		0 => "Gast",
+	],
+	"Keyboard shortcuts" => [
+		0 => "Tastatur-Shortcut",
+	],
+	"Like" => [
+		0 => "Like",
 	],
 	"Uploaded by guest" => [
 		0 => "Hochgeladen von einem Gast",
@@ -1731,6 +1717,9 @@ $translation_table = [
 	"Resend instructions" => [
 		0 => "Anweisungen erneut senden",
 	],
+	"An error occurred. Please try again later." => [
+		0 => "Ein Fehler ist aufgetreten. Bitte versuchen Sie es später noch einmal.",
+	],
 	"A previous email has been sent with instructions to reset your password. If you did not receive the instructions try checking your junk or spam filters." => [
 		0 => "Es wurde bereits eine E-Mail mit Anweisungen an die hinterlegte E-Mail-Adresse versendet. Falls Sie keine E-Mail erhalten haben, sollten Sie Ihren Junk- oder Spam-Filter überprüfen.",
 	],
@@ -1782,9 +1771,6 @@ $translation_table = [
 	"You like this" => [
 		0 => "Dir gefällt das",
 	],
-	"Like" => [
-		0 => "Like",
-	],
 	"Upload to album" => [
 		0 => "In Album hochladen",
 	],
@@ -1804,7 +1790,7 @@ $translation_table = [
 		0 => "Ich stimme zu",
 	],
 	"Disk used" => [
-		0 => "Genutzter Speicherplatz",
+		0 => "Speicherverbrauch",
 	],
 	"Add user" => [
 		0 => "Benutzer hinzufügen",
@@ -1845,9 +1831,6 @@ $translation_table = [
 	"Website description" => [
 		0 => "Beschreibung der Internetseite",
 	],
-	"Website keywords" => [
-		0 => "Schlagwörter der Internetseite",
-	],
 	"Default time zone" => [
 		0 => "Standard-Zeitzone",
 	],
@@ -1858,7 +1841,13 @@ $translation_table = [
 		0 => "Ermöglicht die Suche nach Bildern, Alben und Benutzern anhand der gegebenen Suchanfrage.",
 	],
 	"Enables to browse public uploaded images. It also enables categories." => [
-		0 => "Erlaubt, öffentlich bereitgestellte Bilder zu durchsuchen. Die Kategorien weren ebenso aktiviert.",
+		0 => "Erlaubt öffentlich bereitgestellte Bilder zu durchsuchen. Die Kategorien weren ebenso aktiviert.",
+	],
+	"guests" => [
+		0 => "Gäste",
+	],
+	"Enables explore for guests." => [
+		0 => "\"Entdecken\"-Modus für Gäste aktivieren.",
 	],
 	"Enables to browse images randomly." => [
 		0 => "Aktiviert das zufällige Durchsuchen von Bildern.",
@@ -2082,6 +2071,9 @@ $translation_table = [
 	"Maximum size allowed by server is %s. This limit is capped by %u and %p (%f values)." => [
 		0 => "Die maximale Dateigröße die vom Server erlaubt wird beträgt %s. Dieses Limit wird von %u und %p begrenzt (%f Werte).",
 	],
+	"Same as \"%s\" but for guests." => [
+		0 => "Das Gleiche wie \"%s\" aber für Gäste.",
+	],
 	"Image path" => [
 		0 => "Bildpfad",
 	],
@@ -2242,10 +2234,10 @@ $translation_table = [
 		0 => "Ablaufdatum",
 	],
 	"Do you really want to remove the ban to the IP %s? This can't be undone." => [
-		0 => "Wollen Sie wirklich die IP-Adresse %s entbannen? Dies kann nicht rückgängig gemacht werden.",
+		0 => "Wollen Sie wirklich die IP-Adresse %s entsperren? Dies kann nicht rückgängig gemacht werden.",
 	],
 	"Banned IP address will be forbidden to use the entire website." => [
-		0 => "Für gebannte IP-Adressen wird die Nutzung der gesamten Internetseite unterbunden.",
+		0 => "Für gesperrte IP-Adressen wird die Nutzung der gesamten Internetseite unterbunden.",
 	],
 	"Edit IP ban" => [
 		0 => "IP-Bann bearbeiten",
@@ -2256,6 +2248,12 @@ $translation_table = [
 	"Enable this if you want to allow users to signup." => [
 		0 => "Aktivieren, falls Benutzern die Registrierung erlaubt sein soll.",
 	],
+	"Enable user content delete" => [
+		0 => "Löschen von Nutzerinhalten aktivieren",
+	],
+	"Enable this if you want to allow users to delete their own content. This setting doesn't affect administrators." => [
+		0 => "Aktivieren, falls Nutzern erlaubt werden soll, ihre eigenen Inhalte zu löschen. Diese Einstellung hat keine Auswirkung auf Administratoren.",
+	],
 	"Minimum age required" => [
 		0 => "Mindestalter erforderlich",
 	],
@@ -2264,6 +2262,12 @@ $translation_table = [
 	],
 	"Leave it empty to don't require a minimum age to use the website." => [
 		0 => "Lassen Sie dieses Feld leer, um kein Mindestalter für die Internetseite einzurichten.",
+	],
+	"Notify on user signup" => [
+		0 => "Benachrichtigung bei Neuanmeldung",
+	],
+	"Enable this if you want to get an email notification for each new user signup." => [
+		0 => "Aktivieren, falls Sie eine E-Mail-Benachrichtigung erhalten möchten, wenn sich ein neuer Nutzer anmeldet.",
 	],
 	"Username routing" => [
 		0 => "Benutzernamen-Routing",
@@ -2296,7 +2300,7 @@ $translation_table = [
 		0 => "Maximale Dateigröße für das Hintergrundbild des Benutzers (%s werden vom Server maximal erlaubt).",
 	],
 	"Shows a consent screen before accessing the website. Useful for adult content websites where minors shouldn't be allowed." => [
-		0 => "Zeigt ein Zustimmungsmitteilung, bevor der Zugriff auf die Website erlaubt wird. Dies ist nützlich für Internetseiten, mit Inhalten für Erwachsene, auf denen Minderjährige nicht zugelassen werden sollten.",
+		0 => "Zeigt ein Zustimmungsmitteilung, bevor der Zugriff auf die Website erlaubt wird. Dies ist nützlich für Internetseiten mit Inhalten für Erwachsene und auf denen Minderjährige nicht zugelassen werden sollen.",
 	],
 	"Enable consent screen" => [
 		0 => "Aktiviere Zustimmungsmitteilung",
@@ -2367,6 +2371,12 @@ $translation_table = [
 	"What pagination method should be used." => [
 		0 => "Auswahl der Methode zum Seitenumbruch.",
 	],
+	"Listing viewer" => [
+		0 => "Listenansicht",
+	],
+	"Enable this to use the listing viewer when clicking on an image." => [
+		0 => "Aktivieren, wenn eine Listenansicht bei einem Klick auf ein Bild angezeigt werden soll.",
+	],
 	"Image listing size" => [
 		0 => "Bildgröße für Auflistung",
 	],
@@ -2379,6 +2389,15 @@ $translation_table = [
 	"Both methods use a fixed width but fluid method uses automatic heights." => [
 		0 => "Beide Methoden nutzen eine feste Bildbreite, mit \"Fließend\" wird die Bildhöhe automatisch angepasst.",
 	],
+	"Album listing images requirement" => [
+		0 => "Mindestanzahl von Bildern für Alben-Listenmodus",
+	],
+	"explore" => [
+		0 => "Entdecken",
+	],
+	"Sets the minimum image count needed to show albums in explore." => [
+		0 => "Definiert die Mindestanzahl von Bildern die notwendig ist, um Alben im \"Entdecken\"-Modus anzuzeigen.",
+	],
 	"Listing columns number" => [
 		0 => "Anzahl der Listen-Spalten",
 	],
@@ -2386,7 +2405,7 @@ $translation_table = [
 		0 => "Hier können Sie festlegen, wie viele Spalten auf welchem Gerät benutzt werden sollen",
 	],
 	"Phone" => [
-		0 => "Smartphone",
+		0 => "Handy",
 	],
 	"Phablet" => [
 		0 => "Phablet",
@@ -2680,16 +2699,16 @@ $translation_table = [
 		0 => "Fehlerausgabe mit Fehler-Log",
 	],
 	"To configure the debug level check the <a %s>debug documentation</a>. Default level is \"Error log\" (1)." => [
-		0 => "Um den Debug-Level zu konfigurieren prüfen Sie die<a %s>Debug-Dokumentation</a>. Die Standardeinstellung lautet \"Fehler-Log\" (1).",
+		0 => "Um den Debug-Level zu konfigurieren prüfen Sie die <a %s>Debug-Dokumentation</a>. Die Standardeinstellung lautet \"Fehler-Log\" (1).",
 	],
 	"Routing allows you to customize default route binds on the fly. Only alphanumeric, hyphen and underscore characters are allowed. Check out our %s if you want to override or add new routes." => [
-		0 => "Das Routing erlaubt, benutzerdefinierte Pfade festzulegen. Es sind nur alphanumerische Zeichen, Bindestriche und Unterstriche erlaubt. Prüfen Sie %s, wenn Sie pfade überschreiben oder neue festlegen wollen.",
+		0 => "Das Routing erlaubt benutzerdefinierte Pfade festzulegen. Es sind nur alphanumerische Zeichen, Bindestriche und Unterstriche erlaubt. Prüfen Sie %s, wenn Sie Pfade überschreiben oder neue festlegen wollen.",
 	],
 	"Image routing" => [
 		0 => "Bild-Routing",
 	],
 	"Routing for %s" => [
-		0 => "Routing for %s",
+		0 => "Routing für %s",
 	],
 	"Album routing" => [
 		0 => "Album-Routing",
@@ -2877,6 +2896,15 @@ $translation_table = [
 	"Use this key when using the <a %s>API v1</a>." => [
 		0 => "Nutzen Sie diesen Schlüssel wenn Sie <a %s>API v1</a> verwenden.",
 	],
+	"Plugin route" => [
+		0 => "Plugin-Route",
+	],
+	"Enable this to display plugin instructions at %u. A link to these instructions will be added to the %s menu. This setting doesn't affect administrators." => [
+		0 => "Aktivieren, um Anweisungen für Plugins auf %u anzuzeigen. Eine Verlinkung zu den Anweisungen wird zum %s Menü hinzugefügt. Diese Einstellung betrifft keine Administratoren.",
+	],
+	"Use this to set a custom URL for %p. Please note that you need to manually replicate %s in this URL." => [
+		0 => "Nutzen Sie diese Funktion, um eine benutzerdefinierte URL für %p zu setzen. Beachten Sie bitte, dass %s manuell in der URL geändert werden muss.",
+	],
 	"Cookie law compliance" => [
 		0 => "Rechtlicher Hinweis zu Cookies",
 	],
@@ -2894,9 +2922,6 @@ $translation_table = [
 	],
 	"Load full resolution" => [
 		0 => "Volle Auflösung laden",
-	],
-	"Guest" => [
-		0 => "Gast",
 	],
 	"Added to %a and categorized in %c" => [
 		0 => "Bild wurde zu %a hinzugefügt und in %c kategorisiert",
@@ -2929,7 +2954,7 @@ $translation_table = [
 		0 => "Bilder hochladen und teilen.",
 	],
 	"Drag and drop anywhere you want and start uploading your images now. %s limit. Direct image links, BBCode and HTML thumbnails." => [
-		0 => "Jetzt ganz leicht per Drag-and-Drop! Bis %s Bildgröße. Inklusive direkter Bildlinks, BBCodes und HTML Vorschaubilder.",
+		0 => "Jetzt ganz leicht per Drag & Drop! Bis %s Bildgröße. Inklusive direkter Bildlinks, BBCodes und HTML Vorschaubilder.",
 	],
 	"Start uploading" => [
 		0 => "Upload starten",
@@ -2964,6 +2989,63 @@ $translation_table = [
 	"Send" => [
 		0 => "Senden",
 	],
+	"Add image uploading to your website, blog or forum by installing our upload plugin. It provides image uploading to any website by placing a button that will allow your users to directly upload images to our service and it will automatically handle the codes needed for insertion. All features included like drag and drop, remote upload, image resizing and more." => [
+		0 => "Ermöglichen Sie das Hochladen von Bildern auf Ihrer Internetseite, Ihrm  Blog oder Ihrem Forum, indem Sie das Upload-Plugin installieren. Es ermöglicht das Hochladen von Bildern über einen zusätzlichen Button. Dieser erlaubt Ihren Nutzern, Bilder direkt über unseren Service hochzuladen. Das Plugin verwaltet automatisch die Codes, die für das Einfügen der Bilder notwendig sind. Der Funktionsumfang umfasst Drag & Drop, Remote-Uploads, Änderungen der Bildgröße und vieles mehr!",
+	],
+	"Supported software" => [
+		0 => "Unterstützte Software",
+	],
+	"supported software" => [
+		0 => "unterstützten Dienste",
+	],
+	"The plugin works in any website with user-editable content and for %sv, it will place an upload button that will match the target editor toolbar so no extra customization is needed." => [
+		0 => "Das Plugin arbeitet auf jeder Internetseite, die über editierbare Inhalte verfügt. Bei %sv wird ein Upload-Button platziert, der sich an die Editor-Toolbar ohne weitere Änderungen anpasst.",
+	],
+	"Add it to your website" => [
+		0 => "Zu Ihrer Internetseite hinzufügen",
+	],
+	"options" => [
+		0 => "Optionen",
+	],
+	"Copy and paste the plugin code into your website HTML code (preferably inside the head section). There are plenty %o to make it fit better to your needs." => [
+		0 => "Kopieren Sie den Plugin-Code und fügen Sie ihn in den HTML-Code Ihrer Internetseite ein (vorzugsweise immerhalb des Head-Bereichs). Es gibt viele %o, um den Code an Ihre Bedürfnisse anzupassen.",
+	],
+	"Basic options" => [
+		0 => "Grundoptionen",
+	],
+	"Color palette" => [
+		0 => "Farbpalette",
+	],
+	"Button color scheme" => [
+		0 => "Button-Farbschema",
+	],
+	"Embed codes that will be auto-inserted in editor box" => [
+		0 => "Eingebettete Codes, die automatisch in die Editor-Box eingefügt werden.",
+	],
+	"Sibling selector" => [
+		0 => "Geschwister-Selektor",
+	],
+	"Sibling element selector where to place the button next to" => [
+		0 => "Bestimmt, an welchem Geschwister-Element der Button platziert wird.",
+	],
+	"Sibling position" => [
+		0 => "Geschwister-Position",
+	],
+	"After" => [
+		0 => "Nachher",
+	],
+	"Before" => [
+		0 => "Vorher",
+	],
+	"Position relative to sibling element" => [
+		0 => "Bestimmt die Position relativ zum Geschwister-Element.",
+	],
+	"Advanced options" => [
+		0 => "Erweiterte Einstellungen",
+	],
+	"The plugin has a large set of additional options that allow full customization. You can use custom HTML, CSS, own color palette, set observers and more. Check the %d and the plugin source to get a better idea of these advanced options." => [
+		0 => "Das Plugin hat eine breite Auswahl an weiteren Einstellungen, die eine vollständige Anpassung an die eigenen Bedürfnisse erlauben. Sie können benutzerdefinierte HTML-Codes, CSS, eigene Farbpaletten und Beobachter und vieles mehr festlegen. Prüfen Sie die %d und den Quellcode des Plugins, um ein besseres Verständnis von den Optionen zu erhalten.",
+	],
 	"You either don't have permission to access this page or the link has expired." => [
 		0 => "Sie haben entweder keine Berechtigung zum Anzeigen der Seite oder der aufgerufene Link ist nicht mehr gültig.",
 	],
@@ -2989,7 +3071,7 @@ $translation_table = [
 		0 => "Aktiv",
 	],
 	"Banned" => [
-		0 => "Gebannt",
+		0 => "Gesperrt",
 	],
 	"Awaiting email" => [
 		0 => "Erwarte E-Mail",
@@ -3061,7 +3143,7 @@ $translation_table = [
 		0 => "Schalten Sie Ihr Profil und Ihre Identität in den \"Privat\"-Modus",
 	],
 	"Enable this if you want to act like an anonymous user" => [
-		0 => "Aktivieren Sie diese Option, wenn Sie anonym handeln wollen",
+		0 => "Aktivieren Sie diese Option, wenn Sie anonym bleiben wollen",
 	],
 	"This is your real name, not your username." => [
 		0 => "Zusätzlich zum Benutzernamen kann hier ein Realname festgelegt werden.",
@@ -3133,11 +3215,32 @@ $translation_table = [
 	"Follow" => [
 		0 => "Folgen",
 	],
+	"General questions/comments" => [
+		0 => "Allgemeine Fragen / Kommentare",
+	],
+	"DMCA complaint" => [
+		0 => "Urheberrechtsverletzung",
+	],
+	"Invalid message" => [
+		0 => "Ungültige Nachricht",
+	],
+	"Invalid subject" => [
+		0 => "Ungültiger Titel",
+	],
+	"Invalid reCAPTCHA" => [
+		0 => "Ungültiges reCAPTCHA",
+	],
+	"Mail error" => [
+		0 => "E-Mail Fehler",
+	],
 	"Message sent" => [
 		0 => "Nachricht gesendet",
 	],
 	"Contact" => [
 		0 => "Kontakt",
+	],
+	"Message sent. We will get in contact soon." => [
+		0 => "Nachricht gesendet. Wir werden in Kürze mit Ihnen Kontakt aufnehmen!",
 	],
 	"If you want to send a message fill the form below." => [
 		0 => "Wenn Sie uns eine Nachricht übermitteln möchten, füllen Sie bitte das folgende Formular aus.",
@@ -3226,6 +3329,18 @@ $translation_table = [
 	"This website is running latest %s version" => [
 		0 => "Die Internetseite läuft mit der aktuellsten %s Version.",
 	],
+	"Toggle select" => [
+		0 => "Markieren umschalten",
+	],
+	"Toggle flag" => [
+		0 => "Anstößig umschalten",
+	],
+	"Previous" => [
+		0 => "Voherige",
+	],
+	"Next" => [
+		0 => "Nächste",
+	],
 	"Clipboard image" => [
 		0 => "Bild in Zwischenablage",
 	],
@@ -3263,10 +3378,10 @@ $translation_table = [
 		0 => "Ungültiges Ablaufdatum.",
 	],
 	"IP %s already banned." => [
-		0 => "IP-Adresse %s wurde bereits gebannt.",
+		0 => "IP-Adresse %s wurde bereits gesperrt.",
 	],
 	"IP %s banned." => [
-		0 => "IP-Adresse %s gebannt.",
+		0 => "IP-Adresse %s gesperrt.",
 	],
 	"IP ban successfully deleted." => [
 		0 => "IP-Bann wurde erfolgreich gelöscht.",

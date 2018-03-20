@@ -1,8 +1,8 @@
 <?php
 $translation_header = array (
   'Project-Id-Version' => 'VERSION',
-  'POT-Creation-Date' => '2017-05-23 17:56+0000',
-  'PO-Revision-Date' => '2017-05-23 17:56+0000',
+  'POT-Creation-Date' => '2018-02-28 17:59+0000',
+  'PO-Revision-Date' => '2018-02-28 17:59+0000',
   'Last-Translator' => 'FULL NAME <EMAIL@ADDRESS>',
   'Language-Team' => 'LANGUAGE TEAM <EMAIL@ADDRESS>',
   'Language' => 'ru',
@@ -13,9 +13,7 @@ $translation_header = array (
 );
 $translation_plural = array (
   'nplurals' => 3,
-  'plural' => '(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)',
-  'formula' => '($n%10==1 && $n%100!=11 ? (0) : ($n%10>=2 && $n%10<=4 && ($n%100<10 || $n%100>=20) ? (1) : (2)))',
-  'function' => '$index = (int)(($n%10==1 && $n%100!=11 ? (0) : ($n%10>=2 && $n%10<=4 && ($n%100<10 || $n%100>=20) ? (1) : (2)))); return ($index < 3) ? $index : 3 - 1;',
+  'function' => '($n != 1)',
 );
 $translation_table = [
 	"Invalid email" => [
@@ -56,9 +54,6 @@ $translation_table = [
 	],
 	"Update in progress" => [
 		0 => "Выполняется обновление",
-	],
-	"An error occurred. Please try again later." => [
-		0 => "В процессе выполнения произошла ошибка. Пожалуйста попробуйте позже.",
 	],
 	"Missing %s file" => [
 		0 => "Отсутствует файл %s",
@@ -122,9 +117,6 @@ $translation_table = [
 	"After %n %t" => [
 		0 => "Через %n %t",
 	],
-	"Don't autodelete" => [
-		0 => "Никогда не удалять",
-	],
 	"minute" => [
 		0 => "минута",
 		1 => "минуты",
@@ -140,23 +132,29 @@ $translation_table = [
 		1 => "дня",
 		2 => "дней",
 	],
+	"week" => [
+		0 => "неделя",
+		1 => "недели",
+		2 => "недель",
+	],
+	"month" => [
+		0 => "месяц",
+		1 => "месяца",
+		2 => "месяцев",
+	],
+	"year" => [
+		0 => "год",
+		1 => "года",
+		2 => "лет",
+	],
+	"Don't autodelete" => [
+		0 => "Никогда не удалять",
+	],
 	"Duplicated upload" => [
 		0 => "Повторяющаяся загрузка",
 	],
-	"Error storing file in external storage server" => [
-		0 => "Ошибка при сохранении файла во внешнем хранилище",
-	],
-	"External storage has failed" => [
-		0 => "Проблема с внешним хранилищем",
-	],
 	"Private upload" => [
 		0 => "Скрытая загрузка",
-	],
-	"Upload switched to local storage" => [
-		0 => "Загрузка файлов ведется в локальное хранилище",
-	],
-	"System has switched to local storage due to not enough disk capacity (%c) in the external storage server(s). The image %s has been allocated to local storage." => [
-		0 => "Система переключилась на локальное хранилище из-за нехватки места на диске (%c) в одном или нескольких внешних хранилищах. Изображение %s было сохранено в локальном хранилище.",
 	],
 	"like" => [
 		0 => "понравилось",
@@ -174,9 +172,6 @@ $translation_table = [
 	"Trending" => [
 		0 => "В тренде",
 	],
-	"Popular" => [
-		0 => "Популярные",
-	],
 	"Top users" => [
 		0 => "Самые активные",
 	],
@@ -187,6 +182,9 @@ $translation_table = [
 		0 => "Старые",
 	],
 	"Most viewed" => [
+		0 => "Популярные",
+	],
+	"Popular" => [
 		0 => "Популярные",
 	],
 	"Most liked" => [
@@ -249,21 +247,6 @@ $translation_table = [
 	"Private profile" => [
 		0 => "Скрытый профиль",
 	],
-	"year" => [
-		0 => "год",
-		1 => "года",
-		2 => "лет",
-	],
-	"month" => [
-		0 => "месяц",
-		1 => "месяца",
-		2 => "месяцев",
-	],
-	"week" => [
-		0 => "неделя",
-		1 => "недели",
-		2 => "недель",
-	],
 	"second" => [
 		0 => "секунда",
 		1 => "секунды",
@@ -274,9 +257,6 @@ $translation_table = [
 	],
 	"moments ago" => [
 		0 => "минут назад",
-	],
-	"System notification" => [
-		0 => "Системное уведомление",
 	],
 	"Dashboard" => [
 		0 => "Панель управления",
@@ -308,9 +288,6 @@ $translation_table = [
 	"You can apply this update directly from your %a or download it from %s and then manually install it." => [
 		0 => "Вы можете обновить систему через %a или скачать архив с %s и установить обновление вручную.",
 	],
-	"Chevereto update available (v%s)" => [
-		0 => "Доступно обновление Chevereto (v%s)",
-	],
 	"view on %s" => [
 		0 => "посмотреть на %s",
 	],
@@ -325,6 +302,9 @@ $translation_table = [
 	],
 	"View all my images" => [
 		0 => "Показать мои изображения",
+	],
+	"Plugin" => [
+		0 => "Плагин",
 	],
 	"That page doesn't exist" => [
 		0 => "Эта страница не существует",
@@ -784,6 +764,9 @@ $translation_table = [
 	"Only alphanumeric, hyphen and underscore characters are allowed" => [
 		0 => "Только цифры, латинские буквы, дефис и нижнее подчеркивание",
 	],
+	"Invalid URL" => [
+		0 => "Неверный URL",
+	],
 	"Routes can't be the same" => [
 		0 => "Маршрут должен быть уникальным",
 	],
@@ -810,9 +793,6 @@ $translation_table = [
 	],
 	"Invalid SMTP username" => [
 		0 => "Неверное SMTP имя",
-	],
-	"Invalid URL" => [
-		0 => "Неверный URL",
 	],
 	"This URL key is already being used by another page (ID %s)" => [
 		0 => "Этот URL-ключ уже используется для другой страницы (ID %s)",
@@ -844,9 +824,6 @@ $translation_table = [
 	"Upload date" => [
 		0 => "Дата загрузки",
 	],
-	"%s images" => [
-		0 => "%s изображений",
-	],
 	"Image %i in %a album" => [
 		0 => "Изображение %i в альбоме %a",
 	],
@@ -859,11 +836,11 @@ $translation_table = [
 	"Direct links" => [
 		0 => "Прямые ссылки",
 	],
-	"Image URL" => [
-		0 => "Прямая ссылка",
-	],
 	"Image link" => [
 		0 => "Оригинал",
+	],
+	"Image URL" => [
+		0 => "Прямая ссылка",
 	],
 	"Thumbnail URL" => [
 		0 => "Миниатюра",
@@ -946,32 +923,11 @@ $translation_table = [
 	"Logged out" => [
 		0 => "Выход из системы",
 	],
-	"General questions/comments" => [
-		0 => "Общие вопросы/комментарии",
+	"Upload images" => [
+		0 => "Загрузить изображения",
 	],
-	"DMCA complaint" => [
-		0 => "DMCA жалоба",
-	],
-	"Invalid name" => [
-		0 => "Неверное имя",
-	],
-	"Invalid message" => [
-		0 => "Неверное сообщение",
-	],
-	"Invalid subject" => [
-		0 => "Неверная тема",
-	],
-	"Invalid reCAPTCHA" => [
-		0 => "Неверная reCAPTCHA",
-	],
-	"Can't submit the form: %s" => [
-		0 => "Не могу отправить форму: %s",
-	],
-	"Message sent. We will get in contact soon." => [
-		0 => "Сообщение успешно отправлено. Мы ответим на него в кратчайшие сроки.",
-	],
-	"Mail error" => [
-		0 => "Ошибка электронной почты",
+	"Upload plugin" => [
+		0 => "Загрузить плагин",
 	],
 	"Image search results for %s" => [
 		0 => "Результаты поиска изображений по запросу %s",
@@ -996,6 +952,9 @@ $translation_table = [
 	],
 	"An email has been sent to %s with instructions to activate this email" => [
 		0 => "На %s было отправлено сообщение с инструкциями по активации",
+	],
+	"Invalid name" => [
+		0 => "Неверное имя",
 	],
 	"Invalid website" => [
 		0 => "Неправильний веб-сайт",
@@ -1026,6 +985,9 @@ $translation_table = [
 	],
 	"Create account" => [
 		0 => "Зарегистрироваться",
+	],
+	"Upload" => [
+		0 => "Загрузка",
 	],
 	"%s's Images" => [
 		0 => "Изображения %s",
@@ -1065,9 +1027,6 @@ $translation_table = [
 	],
 	"Notices (%s)" => [
 		0 => "Уведомления (%s)",
-	],
-	"Upload" => [
-		0 => "Загрузка",
 	],
 	"Sign in with another account" => [
 		0 => "Войти через",
@@ -1171,26 +1130,32 @@ $translation_table = [
 	"You can also %i or %u." => [
 		0 => "Вы также можете %i или %u.\n",
 	],
+	"browse from your device" => [
+		0 => "обзор изображений с устройства",
+	],
 	"take a picture" => [
 		0 => "сделать фото",
+	],
+	"You can also %i, %c or %u." => [
+		0 => "Вы также можете %i, %c или %u.",
 	],
 	"Edit or resize any image by clicking the image preview" => [
 		0 => "Нажмите на миниатюру, чтобы отредактировать изображение или изменить его размер",
 	],
-	"Edit or resize any image by touching the image preview" => [
-		0 => "Дотроньтесь до миниатюры, чтобы отредактировать изображение или изменить его размер",
+	"Edit any image by touching the image preview" => [
+		0 => "Отредактируйте изображение касанием окна предпросмотра.",
 	],
 	"your computer" => [
 		0 => "вашего компьютера",
 	],
-	"image URLs" => [
-		0 => "ссылки на изображения",
-	],
-	"You can keep adding more images from %i or from %u." => [
+	"You can add more images from %i or %u." => [
 		0 => "Вы можете добавить изображения с %i или %u.",
 	],
 	"your device" => [
 		0 => "вашего устройства",
+	],
+	"You can add more images from %i, %c or %u." => [
+		0 => "Вы можете добавить изображения с %i, %c или %u.",
 	],
 	"Uploading %q %o" => [
 		0 => "Загружается %q %o",
@@ -1264,14 +1229,17 @@ $translation_table = [
 	"Check the <a data-modal=\"simple\" data-target=\"failed-upload-result\">error report</a> for more information." => [
 		0 => "Проверьте <a data-modal=\"simple\" data-target=\"failed-upload-result\">отчет об ошибках</a> для получения более подробной информации.",
 	],
-	"max" => [
-		0 => "макс.",
+	"reset" => [
+		0 => "сброс",
 	],
 	"close" => [
 		0 => "закрыть",
 	],
 	"copy" => [
 		0 => "копировать",
+	],
+	"insert" => [
+		0 => "вставить",
 	],
 	"Edit" => [
 		0 => "Редактировать",
@@ -1635,9 +1603,6 @@ $translation_table = [
 	"There's nothing to show here." => [
 		0 => "Нет элементов для отображения.",
 	],
-	"Upload images" => [
-		0 => "Загрузить изображения",
-	],
 	"Edit image details" => [
 		0 => "Редактировать изображение",
 	],
@@ -1682,6 +1647,12 @@ $translation_table = [
 	],
 	"Do you really want to remove all the selected content? This can't be undone." => [
 		0 => "Вы действительно хотите удалить выделенное содержимое? Это действие необратимо.",
+	],
+	"Guest" => [
+		0 => "Гость",
+	],
+	"Like" => [
+		0 => "Нравится",
 	],
 	"Uploaded by guest" => [
 		0 => "Загружено гостем",
@@ -1746,6 +1717,9 @@ $translation_table = [
 	"Resend instructions" => [
 		0 => "Повторить отправку инструкций",
 	],
+	"An error occurred. Please try again later." => [
+		0 => "В процессе выполнения произошла ошибка. Пожалуйста попробуйте позже.",
+	],
 	"A previous email has been sent with instructions to reset your password. If you did not receive the instructions try checking your junk or spam filters." => [
 		0 => "Вам уже было отправлено сообщение с инструкциями по сбросу пароля. Если вы не получили сообщения, проверьте папку Спам.",
 	],
@@ -1796,9 +1770,6 @@ $translation_table = [
 	],
 	"You like this" => [
 		0 => "Вам это нравится",
-	],
-	"Like" => [
-		0 => "Нравится",
 	],
 	"Upload to album" => [
 		0 => "Загрузить в альбом",
@@ -1859,9 +1830,6 @@ $translation_table = [
 	],
 	"Website description" => [
 		0 => "Описание сайта",
-	],
-	"Website keywords" => [
-		0 => "Ключевые слова",
 	],
 	"Default time zone" => [
 		0 => "Часовой пояс по-умолчанию",
@@ -2270,6 +2238,12 @@ $translation_table = [
 	],
 	"Enable this if you want to allow users to signup." => [
 		0 => "Включите, чтобы разрешить регистрацию пользователей.",
+	],
+	"Enable user content delete" => [
+		0 => "Разрешить пользователям удаление содержимого",
+	],
+	"Enable this if you want to allow users to delete their own content. This setting doesn't affect administrators." => [
+		0 => "Включите, чтобы позволить пользователям удалять свое содержимое. Эта настройка не влияет на администраторов.",
 	],
 	"Minimum age required" => [
 		0 => "Минимальный возраст посетителя",
@@ -2892,6 +2866,15 @@ $translation_table = [
 	"Use this key when using the <a %s>API v1</a>." => [
 		0 => "Используйте этот ключ с <a %s>API v1</a>.",
 	],
+	"Plugin route" => [
+		0 => "Маршрут плагина",
+	],
+	"Enable this to display plugin instructions at %u. A link to these instructions will be added to the %s menu. This setting doesn't affect administrators." => [
+		0 => "Включите, чтобы показывать инструкцию по использованию плагина в %u. Ссылка на них будет добавлена в меню %s. Эта настройка не влияет на администраторов.",
+	],
+	"Use this to set a custom URL for %p. Please note that you need to manually replicate %s in this URL." => [
+		0 => "Установите собственный адрес для %p. Вам необходимо будет вручную указать в этом адресе %s.",
+	],
 	"Cookie law compliance" => [
 		0 => "Соответствие закону Евросоюза о cookies",
 	],
@@ -2909,9 +2892,6 @@ $translation_table = [
 	],
 	"Load full resolution" => [
 		0 => "Загрузить полную версию",
-	],
-	"Guest" => [
-		0 => "Гость",
 	],
 	"Added to %a and categorized in %c" => [
 		0 => "Добавлено к %a в категорию %c",
@@ -2978,6 +2958,63 @@ $translation_table = [
 	],
 	"Send" => [
 		0 => "Отправить",
+	],
+	"Add image uploading to your website, blog or forum by installing our upload plugin. It provides image uploading to any website by placing a button that will allow your users to directly upload images to our service and it will automatically handle the codes needed for insertion. All features included like drag and drop, remote upload, image resizing and more." => [
+		0 => "Добавьте возможность загружать изображение на ваш сайт, блог или форум установив наш плагин. Он предоставляет возможность загружать изображение путем установки кнопки, которая позволит вашим пользователям напрямую загружать изображения на наш сервис и автоматически предоставит коды для вставки. Плагин включает все возможности, такие как загрузка через перетаскивание, удаленная загрузка, изменение размера изображений и другие.",
+	],
+	"Supported software" => [
+		0 => "Поддерживаемое ПО",
+	],
+	"supported software" => [
+		0 => "поддерживаемое ПО",
+	],
+	"The plugin works in any website with user-editable content and for %sv, it will place an upload button that will match the target editor toolbar so no extra customization is needed." => [
+		0 => "Плагин работает на любом сайте с редактируемым содержимым и для %s, он размещает кнопку рядом с панелью управления редактором, что позволит избежать необходимости внесения дополнительных изменений.",
+	],
+	"Add it to your website" => [
+		0 => "Добавить на сайт",
+	],
+	"options" => [
+		0 => "настройки",
+	],
+	"Copy and paste the plugin code into your website HTML code (preferably inside the head section). There are plenty %o to make it fit better to your needs." => [
+		0 => "Вставьте код плагина в HTML-код вашего сайта (желательно в раздел head). Плагин имеет множество %o для лучшей интеграции с вашим сайтом.",
+	],
+	"Basic options" => [
+		0 => "Основные настройки",
+	],
+	"Color palette" => [
+		0 => "Палитра цветов",
+	],
+	"Button color scheme" => [
+		0 => "Цветовая схема кнопки",
+	],
+	"Embed codes that will be auto-inserted in editor box" => [
+		0 => "Коды для встраивания, которые будут автоматически вставлены в редактор",
+	],
+	"Sibling selector" => [
+		0 => "Селектор элемента",
+	],
+	"Sibling element selector where to place the button next to" => [
+		0 => "Селектор элемента, рядом с котором будет размещена кнопка",
+	],
+	"Sibling position" => [
+		0 => "Позиция элемента",
+	],
+	"After" => [
+		0 => "После",
+	],
+	"Before" => [
+		0 => "Перед",
+	],
+	"Position relative to sibling element" => [
+		0 => "Позиция относительно элемента",
+	],
+	"Advanced options" => [
+		0 => "Дополнительные настройки",
+	],
+	"The plugin has a large set of additional options that allow full customization. You can use custom HTML, CSS, own color palette, set observers and more. Check the %d and the plugin source to get a better idea of these advanced options." => [
+		0 => "Плагин имеет большое число дополнительных настроек позволяющих осуществить бесшовную интеграцию с вашим проектом. Вы можете задать собственный HTML, CSS, собственную палитру цветов, устанавливать наблюдатели за изменениями и многое другое. Более подробную информацию об этих дополнительных настройках вы можете посмотреть в исходном коде плагина или в %d.",
 	],
 	"You either don't have permission to access this page or the link has expired." => [
 		0 => "У вас нет прав на доступ к данной странице или ссылка устарела.",
@@ -3149,11 +3186,32 @@ $translation_table = [
 	"Follow" => [
 		0 => "Подписаться",
 	],
+	"General questions/comments" => [
+		0 => "Общие вопросы/комментарии",
+	],
+	"DMCA complaint" => [
+		0 => "DMCA жалоба",
+	],
+	"Invalid message" => [
+		0 => "Неверное сообщение",
+	],
+	"Invalid subject" => [
+		0 => "Неверная тема",
+	],
+	"Invalid reCAPTCHA" => [
+		0 => "Неверная reCAPTCHA",
+	],
+	"Mail error" => [
+		0 => "Ошибка электронной почты",
+	],
 	"Message sent" => [
 		0 => "Сообщение отправлено",
 	],
 	"Contact" => [
 		0 => "Обратная связь",
+	],
+	"Message sent. We will get in contact soon." => [
+		0 => "Сообщение успешно отправлено. Мы ответим на него в кратчайшие сроки.",
 	],
 	"If you want to send a message fill the form below." => [
 		0 => "Заполните форму, если Вы хотите отправить сообщение.",
@@ -3241,6 +3299,15 @@ $translation_table = [
 	],
 	"This website is running latest %s version" => [
 		0 => "Вы используете последнюю версию Chevereto - %s",
+	],
+	"Toggle select" => [
+		0 => "выбранное",
+	],
+	"Previous" => [
+		0 => "Предыдущая",
+	],
+	"Next" => [
+		0 => "Следующая",
 	],
 	"Clipboard image" => [
 		0 => "Изображение из буфера обмена",

@@ -9,7 +9,7 @@
 			<inbox@rodolfoberrios.com>
 
   Copyright (C) Rodolfo Berrios A. All rights reserved.
-  
+
   BY USING THIS SOFTWARE YOU DECLARE TO ACCEPT THE CHEVERETO EULA
   http://chevereto.com/license
 
@@ -22,11 +22,10 @@ use G, Exception;
  * This could be used to extend the image types allowed... Maybe .tiff support and so on.
  */
 class ImageConvert {
-	
+
 	function __construct($source, $to, $destination, $quality=90)
 	{
-		$source_info = G\get_image_fileinfo($source);
-		
+		$source_info = G\get_image_fileinfo($source);	
 		switch($source_info['extension']) {
 			case 'bmp':
 				$temp_image = G\imagecreatefrombmp($source);
@@ -44,11 +43,11 @@ class ImageConvert {
 				return $source;
 			break;
 		}
-		
+
 		if(!$temp_image) {
 			return $source;
 		}
-		
+
 		unlink($source);
 
 		switch($to) {
@@ -58,14 +57,14 @@ class ImageConvert {
 			case 'gif':
 				imagegif($temp_image, $destination);
 			break;
-			case 'png':			
+			case 'png':
 				imagepng($temp_image, $destination);
 			break;
 			default:
 				return $source;
 			break;
 		}
-		
+
 		$this->out = $destination;
 	}
 

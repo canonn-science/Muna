@@ -80,7 +80,7 @@ $route = function($handler) {
 		$is_changed = false;
 
 		// vars
-		$input_errors = array();
+		$input_errors = [];
 		$error_message = NULL;
 
 		if($doing == '') {
@@ -88,12 +88,17 @@ $route = function($handler) {
 		}
 
 		// Old and new image size counter
-		$image_size_count_qry = 'SELECT (SUM(image_size) + SUM(image_thumb_size) + SUM(image_medium_size)) as count';
+		$image_size_count_qry = version_compare(CHV\getSetting('chevereto_version_installed'), '3.5.5', '<') ? 'SELECT SUM(image_size) as count' : 'SELECT (SUM(image_size) + SUM(image_thumb_size) + SUM(image_medium_size)) as count';
 
 		switch($doing) {
 
 			case 'stats':
-				$totals = CHV\Stat::getTotals();
+				if(version_compare(CHV\getSetting('chevereto_version_installed'), '3.7.0', '<')) {
+					$totals = [];
+				} else {
+					$totals = CHV\Stat::getTotals();
+					// Note: if totals = empty row -> RECREATE
+				}
 
 				$totals_display = [];
 				foreach(['images', 'users', 'albums'] as $v) {
@@ -118,9 +123,12 @@ $route = function($handler) {
 
 				$system_values = [
 					'chv_version'	=> [
-						'label'		=> _s('Chevereto Free'),
-						'content'	=>  (version_compare($chv_version['files'], $chv_version['db'], '<=') ? $chv_version['files'] : $chv_version['files'] . ' ('.$chv_version['db'].' DB) <a href="'.G\get_base_url('install').'">'._s('install update').'</a>') . ' – <a data-action="check-for-updates">' . _s("check for updates") . '</a>' . '<p><a class="btn btn-capsule btn-upgrade red" data-action="upgrade">Upgrade</a> Upgrade to paid edition to get all features, constant updates and support.
-						</p>'
+						'label'		=> _s('Chevereto version'),
+						'content'	=>  (version_compare($chv_version['files'], $chv_version['db'], '<=') ? $chv_version['files'] : $chv_version['files'] . ' ('.$chv_version['db'].' DB) <a href="'.G\get_base_url('install').'">'._s('install update').'</a>') . ' – <a data-action="check-for-updates">' . _s("check for updates") . '</a>'
+					],
+					'support'		=> [
+						'label'		=> 'Support',
+						'content'	=> _s('Need help? Go to %s and you will get help quickly.', ['%s' => '<a href="https://chevereto.com/support" target="_blank">'._s('Support').'</a>'])
 					],
 					'g_version'		=> [
 						'label'		=> 'G\\',
@@ -174,12 +182,12 @@ $route = function($handler) {
 				$chevereto_urls = [
 					_s('Support')				=> 'https://chevereto.com/support',
 					_s('Documentation')			=> 'https://chevereto.com/docs',
-					_s('Releases')	. ' (paid edition)' => 'https://chevereto.com/releases',
+					_s('Changelog')				=> 'https://chevereto.com/changelog',
 					_s('Request new features')	=> 'https://chevereto.com/request-new-features',
 					_s('Bug tracking')			=> 'https://chevereto.com/bug-tracking',
 					_s('Blog')					=> 'https://chevereto.com/blog',
 					_s('Community')				=> 'https://chevereto.com/community',
-					'GitHub' 					=> 'https://github.com/Chevereto/Chevereto-Free',
+					'GitHub' 					=> 'https://github.com/Chevereto',
 				];
 				$chevereto_links = [];
 				foreach($chevereto_urls as $k => $v) {
@@ -240,8 +248,8 @@ $route = function($handler) {
 					];
 					if($current) {
 						$handler::setVar('settings', $settings_sections[$k]);
-						if(in_array($k, ['categories', 'ip-bans', 'banners', 'external-storage', 'social-networks'])) {
-							$handler::setCond('show_submit', FALSE);
+						if(in_array($k, ['categories', 'ip-bans'])) {
+							$handler::setCond('show_submit', false);
 						}
 					}
 
@@ -266,7 +274,7 @@ $route = function($handler) {
 								$is_error = TRUE;
 								$error_message = _s('Request denied');
 							}
-							if(count($homecovers) == 1) {
+							if(is_array($homecovers) && count($homecovers) == 1) {
 								$is_error = TRUE;
 								$input_errors[sprintf('homepage_cover_image_%s', $cover_index)] = _s("Can't delete all homepage cover images");
 							}
@@ -297,6 +305,32 @@ $route = function($handler) {
 					case 'tools':
                         $handler::setCond('show_submit', FALSE);
                     break;
+
+					case 'external-storage':
+						$disk_used_all = CHV\Stat::getTotals()['disk_used'];
+						$disk_used_external = CHV\DB::queryFetchSingle('SELECT SUM(storage_space_used) space_used FROM ' . CHV\DB::getTable('storages') . ';')['space_used'];
+						$storage_usage = [
+							'local'		=> [
+								'label' => _s('Local'),
+								'bytes'	=> $disk_used_all - $disk_used_external
+							],
+							'external'	=> [
+								'label' => _s('External'),
+								'bytes' => $disk_used_external
+							]
+						];
+						$storage_usage['all'] = [
+							'label' => _s('All'),
+							'bytes' => $storage_usage['local']['bytes'] + $storage_usage['external']['bytes']
+						];
+						foreach($storage_usage as $k => &$v) {
+							if(empty($v['bytes'])) { $v['bytes'] = 0; }
+							$v['link'] = '<a href="'.G\get_base_url('search/images/?q=storage:'.$k).'" target="_blank">'._s('search content').'</a>';
+							$v['formatted_size'] = G\format_bytes($v['bytes'], 2);
+						}
+
+						$handler::setVar('storage_usage', $storage_usage);
+					break;
 
 					case 'pages':
 
@@ -366,6 +400,118 @@ $route = function($handler) {
 						$handler::setvar('settings_pages', $settings_pages);
 
 					break;
+
+					case 'banners':
+						$stock_banners = [
+							'home' => [
+								'label' 	=> _s('Homepage'),
+								'placements'=> [
+									'banner_home_before_title' => [
+										'label' => _s('Before main title (%s)', _s('homepage'))
+									],
+									'banner_home_after_cta' => [
+										'label' => _s('After call to action (%s)', _s('homepage'))
+									],
+									'banner_home_after_cover' => [
+										'label' => _s('After cover (%s)', _s('homepage'))
+									],
+									'banner_home_after_listing' => [
+										'label' => _s('After listing (%s)', _s('homepage'))
+									]
+								]
+							],
+							'listing' => [
+								'label' 	=> _s('Listings'),
+								'placements'=> [
+									'banner_listing_before_pagination' => [
+										'label'	=> _s('Before pagination'),
+									],
+									'banner_listing_after_pagination' => [
+										'label'	=> _s('After pagination'),
+									]
+								]
+							],
+							'content' => [
+								'label' 	=> _s('Content (image and album)'),
+								'placements'=> [
+									'banner_content_tab-about_column' => [
+										'label' => _s('Tab about column')
+									],
+									'banner_content_before_comments' => [
+										'label' => _s('Before comments')
+									]
+								]
+							],
+							'image' => [
+								'label' 	=> _s('Image page'),
+								'placements'=> [
+									'banner_image_image-viewer_top' => [
+										'label' => _s('Inside viewer top (image page)'),
+										'hint'	=> _s('Expected banner size 728x90'),
+									],
+									'banner_image_image-viewer_foot' => [
+										'label' => _s('Inside viewer foot (image page)'),
+										'hint'	=> _s('Expected banner size 728x90'),
+									],
+									'banner_image_after_image-viewer' => [
+										'label' => _s('After image viewer (image page)')
+									],
+									'banner_image_before_header' => [
+										'label' => _s('Before header (image page)')
+									],
+									'banner_image_after_header' => [
+										'label' => _s('After header (image page)')
+									],
+									'banner_image_footer' => [
+										'label' => _s('Footer (image page)')
+									]
+								]
+							],
+							'album' => [
+								'label' 	=> _s('Album page'),
+								'placements'=> [
+									'banner_album_before_header' => [
+										'label' => _s('Before header (album page)')
+									],
+									'banner_album_after_header' => [
+										'label' => _s('After header (album page)')
+									]
+								]
+							],
+							'user' => [
+								'label' 	=> _s('User profile page'),
+								'placements'=> [
+									'banner_user_after_top' => [
+										'label' => _s('After top (user profile)')
+									],
+									'banner_user_before_listing' => [
+										'label' => _s('Before listing (user profile)')
+									]
+								]
+							],
+							'explore' => [
+								'label' 	=> _s('Explore page'),
+								'placements'=> [
+									'banner_explore_after_top' => [
+										'label' => _s('After top (explore page)')
+									]
+								]
+							]
+						];
+						$banners = [];
+						foreach($stock_banners as $k => $stock_group) {
+							$banners[$k] = $stock_group;
+							$group_nsfw = [
+								'label'	=> $stock_group['label'] . ' [' . _s('NSFW') . ']',
+								'placements' => []
+							];
+							foreach($stock_group['placements'] as $id => $placement) {
+								$group_nsfw['placements'][$id . '_nsfw'] = $placement;
+							}
+							$banners[$k . '_nsfw'] = $group_nsfw;
+						}
+						$handler::setVar('banners', $banners);
+					break;
 				}
 
 				if($_POST) {
@@ -412,14 +558,6 @@ $route = function($handler) {
 					if($handler->request[1] == 'pages') {
 
 						$page_file_path_clean = trim(G\sanitize_relative_path($_POST['page_file_path']), '/');
-
-						// Disable PHP pages here
-						if(G\get_app_setting('disable_php_pages')) {
-							$page_extension = G\get_file_extension($page_file_path_clean);
-							if($page_extension == 'php') {
-								$page_file_path_clean = G\str_replace_last($page_extension, 'html', $page_file_path_clean);
-							}
-						}
 
 						$_POST['page_file_path'] = str_replace('default/', NULL, $page_file_path_clean);
 						$_POST['page_file_path_absolute'] = CHV\Page::getPath($_POST['page_file_path']);
@@ -644,7 +782,7 @@ $route = function($handler) {
 							],
 						'page_file_path' =>
 							[
-								'validate'	=> $_POST['page_type'] == 'internal' ? preg_match('/^[\w\-\_\/]+\.('.(G\get_app_setting('disable_php_pages') ? 'html' : 'html|php').')$/', $_POST['page_file_path']) : TRUE,
+								'validate'	=> $_POST['page_type'] == 'internal' ? preg_match('/^[\w\-\_\/]+\.php$/', $_POST['page_file_path']) : TRUE,
 								'error_msg'	=> _s('Invalid file path')
 							],
 						'page_link_url' =>
@@ -687,6 +825,11 @@ $route = function($handler) {
 								'validate'	=> $_POST['auto_delete_guest_uploads'] !== NULL && array_key_exists($_POST['auto_delete_guest_uploads'], CHV\Image::getAvailableExpirations()),
 								'error_msg'	=> _s('Invalid value: %s', $_POST['auto_delete_guest_uploads'])
 							],
+						'sdk_pup_url' =>
+							[
+								'validate'	=> $_POST['sdk_pup_url'] ? filter_var($_POST['sdk_pup_url'], FILTER_VALIDATE_URL) : TRUE,
+								'error_msg'	=> _s('Invalid URL')
+							],
 					];
 
 					// Detect funny stuff
@@ -696,6 +839,10 @@ $route = function($handler) {
 							'error_msg'	=> _s("Routes can't be the same")
 						];
 						$validations['route_album'] = $validations['route_image'];
+					}
+
+					foreach(CHV\Login::getSocialServices(['flat' => true]) as $v) {
+						$validations[$v] = ['validate' => in_array($_POST[$v], [0,1]) ? true : false];
 					}
 
 					// Validate image path
@@ -726,7 +873,7 @@ $route = function($handler) {
 					}
 
 					// Validate max size
-					foreach(['upload_max_filesize_mb', 'user_image_avatar_max_filesize_mb', 'user_image_background_max_filesize_mb'] as $k) {
+					foreach(['upload_max_filesize_mb', 'upload_max_filesize_mb_guest', 'user_image_avatar_max_filesize_mb', 'user_image_background_max_filesize_mb'] as $k) {
 						unset($error_max_filesize);
 						if(isset($_POST[$k])) {
 							if(!is_numeric($_POST[$k]) or $_POST[$k] == 0) {
@@ -973,7 +1120,7 @@ $route = function($handler) {
 
 
 					// Input data looks fine
-					if(count($input_errors) == 0) {
+					if(is_array($input_errors) && count($input_errors) == 0) {
 
 						if($handler->request[1] == 'pages') {
 
@@ -1062,7 +1209,6 @@ $route = function($handler) {
 									$settings_to_vars = [
 										'website_doctitle' => 'doctitle',
 										'website_description' => 'meta_description',
-										'website_keywords'=> 'meta_keywords'
 									];
 									foreach($update_settings as $k => $v) {
 										if($k == 'maintenance') {
@@ -1121,6 +1267,16 @@ $route = function($handler) {
 								'current'	=> $_REQUEST['sort'] == 'views_desc',
 							],
 						];
+						if(CHV\getSetting('enable_likes')) {
+							$tabs[] = [
+								'list'		=> TRUE,
+								'tools'		=> TRUE,
+								'label'		=> _s('Most liked'),
+								'id'		=> 'list-most-liked',
+								'params'	=> 'list=images&sort=likes_desc&page=1',
+								'current'	=> $_REQUEST['sort'] == 'likes_desc',
+							];
+						}
 					break;
 
 					case 'albums':

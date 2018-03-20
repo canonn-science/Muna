@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: VERSION\n"
-"POT-Creation-Date: 2017-05-23 17:56+0000\n"
-"PO-Revision-Date: 2017-05-23 17:56+0000\n"
+"POT-Creation-Date: 2018-02-28 17:59+0000\n"
+"PO-Revision-Date: 2018-02-28 17:59+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE TEAM <EMAIL@ADDRESS>\n"
 "Language: ru\n"
@@ -87,20 +87,6 @@ msgstr "Частный"
 #: ../../../app/install/update/template/update.php:2
 msgid "Update in progress"
 msgstr "Выполняется обновление"
-
-#: ../../../app/install/update/updater.php:62
-#: ../../../app/themes/Peafowl/views/account/password-forgot.php:22
-#: ../../../app/lib/chevereto.js:1237 ../../../app/lib/chevereto.js:1313
-#: ../../../app/lib/chevereto.js:1391 ../../../app/lib/chevereto.js:1539
-#: ../../../app/lib/chevereto.js:1623 ../../../app/lib/chevereto.js:1668
-#: ../../../app/lib/chevereto.min.js:59 ../../../app/lib/chevereto.min.js:63
-#: ../../../app/lib/chevereto.min.js:67 ../../../app/lib/chevereto.min.js:70
-#: ../../../app/lib/chevereto.min.js:74 ../../../app/lib/chevereto.min.js:77
-#: ../../../lib/Peafowl/peafowl.js:2560 ../../../lib/Peafowl/peafowl.js:3096
-#: ../../../lib/Peafowl/peafowl.min.js:158
-#: ../../../lib/Peafowl/peafowl.min.js:195
-msgid "An error occurred. Please try again later."
-msgstr "В процессе выполнения произошла ошибка. Пожалуйста попробуйте позже."
 
 #: ../../../app/install/update/updater.php:72
 #, php-format
@@ -203,10 +189,6 @@ msgstr[2] "просмотров"
 msgid "After %n %t"
 msgstr "Через %n %t"
 
-#: ../../../app/lib/classes/class.image.php:348
-msgid "Don't autodelete"
-msgstr "Никогда не удалять"
-
 #: ../../../app/lib/functions.php:42 ../../../app/lib/functions.php:54
 msgid "minute"
 msgid_plural "minutes"
@@ -228,28 +210,40 @@ msgstr[0] "день"
 msgstr[1] "дня"
 msgstr[2] "дней"
 
+#: ../../../app/lib/functions.php:39 ../../../app/lib/functions.php:51
+msgid "week"
+msgid_plural "weeks"
+msgstr[0] "неделя"
+msgstr[1] "недели"
+msgstr[2] "недель"
+
+#: ../../../app/lib/functions.php:38 ../../../app/lib/functions.php:50
+msgid "month"
+msgid_plural "months"
+msgstr[0] "месяц"
+msgstr[1] "месяца"
+msgstr[2] "месяцев"
+
+#: ../../../app/lib/functions.php:37 ../../../app/lib/functions.php:49
+msgid "year"
+msgid_plural "years"
+msgstr[0] "год"
+msgstr[1] "года"
+msgstr[2] "лет"
+
+#: ../../../app/lib/classes/class.image.php:348
+msgid "Don't autodelete"
+msgstr "Никогда не удалять"
+
 #: ../../../app/lib/classes/class.image.php:636
 #: ../../../app/lib/classes/class.image.php:742
 msgid "Duplicated upload"
 msgstr "Повторяющаяся загрузка"
 
-msgid "Error storing file in external storage server"
-msgstr "Ошибка при сохранении файла во внешнем хранилище"
-
-msgid "External storage has failed"
-msgstr "Проблема с внешним хранилищем"
-
 #: ../../../app/lib/classes/class.image.php:955
 #: ../../../app/themes/Peafowl/snippets/anywhere_upload.php:76
 msgid "Private upload"
 msgstr "Скрытая загрузка"
-
-msgid "Upload switched to local storage"
-msgstr "Загрузка файлов ведется в локальное хранилище"
-
-#, php-format
-msgid "System has switched to local storage due to not enough disk capacity (%c) in the external storage server(s). The image %s has been allocated to local storage."
-msgstr "Система переключилась на локальное хранилище из-за нехватки места на диске (%c) в одном или нескольких внешних хранилищах. Изображение %s было сохранено в локальном хранилище."
 
 #: ../../../app/lib/classes/class.image.php:1231
 msgid "like"
@@ -275,9 +269,6 @@ msgstr "Новые"
 
 msgid "Trending"
 msgstr "В тренде"
-
-msgid "Popular"
-msgstr "Популярные"
 
 #: ../../../app/routes/route.dashboard.php:1163
 msgid "Top users"
@@ -312,6 +303,9 @@ msgstr "Старые"
 #: ../../../app/routes/route.following.php:29
 #: ../../../app/routes/route.user.php:201
 msgid "Most viewed"
+msgstr "Популярные"
+
+msgid "Popular"
 msgstr "Популярные"
 
 #: ../../../app/routes/route.album.php:104
@@ -414,27 +408,6 @@ msgstr "использовано"
 msgid "Private profile"
 msgstr "Скрытый профиль"
 
-#: ../../../app/lib/functions.php:37 ../../../app/lib/functions.php:49
-msgid "year"
-msgid_plural "years"
-msgstr[0] "год"
-msgstr[1] "года"
-msgstr[2] "лет"
-
-#: ../../../app/lib/functions.php:38 ../../../app/lib/functions.php:50
-msgid "month"
-msgid_plural "months"
-msgstr[0] "месяц"
-msgstr[1] "месяца"
-msgstr[2] "месяцев"
-
-#: ../../../app/lib/functions.php:39 ../../../app/lib/functions.php:51
-msgid "week"
-msgid_plural "weeks"
-msgstr[0] "неделя"
-msgstr[1] "недели"
-msgstr[2] "недель"
-
 #: ../../../app/lib/functions.php:43 ../../../app/lib/functions.php:55
 msgid "second"
 msgid_plural "seconds"
@@ -450,9 +423,6 @@ msgstr "%s назад"
 #: ../../../app/lib/functions.php:67
 msgid "moments ago"
 msgstr "минут назад"
-
-msgid "System notification"
-msgstr "Системное уведомление"
 
 #: ../../../app/routes/route.dashboard.php:1223
 #: ../../../app/themes/Peafowl/header.php:407
@@ -496,10 +466,6 @@ msgid "You can apply this update directly from your %a or download it from %s an
 msgstr "Вы можете обновить систему через %a или скачать архив с %s и установить обновление вручную."
 
 #, php-format
-msgid "Chevereto update available (v%s)"
-msgstr "Доступно обновление Chevereto (v%s)"
-
-#, php-format
 msgid "view on %s"
 msgstr "посмотреть на %s"
 
@@ -520,6 +486,9 @@ msgstr "Чувствуйте себя как дома и наслаждайте�
 #: ../../../app/themes/Peafowl/views/settings.php:447
 msgid "View all my images"
 msgstr "Показать мои изображения"
+
+msgid "Plugin"
+msgstr "Плагин"
 
 #: ../../../app/loader.php:396 ../../../app/themes/Peafowl/views/404.php:6
 msgid "That page doesn't exist"
@@ -1280,6 +1249,10 @@ msgstr "Неверно указан минимальный возраст пол
 msgid "Only alphanumeric, hyphen and underscore characters are allowed"
 msgstr "Только цифры, латинские буквы, дефис и нижнее подчеркивание"
 
+#: ../../../app/routes/route.dashboard.php:922
+msgid "Invalid URL"
+msgstr "Неверный URL"
+
 msgid "Routes can't be the same"
 msgstr "Маршрут должен быть уникальным"
 
@@ -1312,10 +1285,6 @@ msgstr "Неверный SMTP сервер"
 #: ../../../app/routes/route.dashboard.php:861
 msgid "Invalid SMTP username"
 msgstr "Неверное SMTP имя"
-
-#: ../../../app/routes/route.dashboard.php:922
-msgid "Invalid URL"
-msgstr "Неверный URL"
 
 #: ../../../app/routes/route.dashboard.php:960
 #, php-format
@@ -1365,11 +1334,6 @@ msgstr "IP-адрес уже заблокирован"
 msgid "Upload date"
 msgstr "Дата загрузки"
 
-#: ../../../app/routes/route.image.php:177
-#, php-format
-msgid "%s images"
-msgstr "%s изображений"
-
 #: ../../../app/routes/route.image.php:185
 msgid "Image %i in %a album"
 msgstr "Изображение %i в альбоме %a"
@@ -1386,13 +1350,13 @@ msgstr "Изображение %i расположенное в %w"
 msgid "Direct links"
 msgstr "Прямые ссылки"
 
-#: ../../../app/themes/Peafowl/views/image.php:279
-msgid "Image URL"
-msgstr "Прямая ссылка"
-
 #: ../../../app/themes/Peafowl/views/image.php:285
 msgid "Image link"
 msgstr "Оригинал"
+
+#: ../../../app/themes/Peafowl/views/image.php:279
+msgid "Image URL"
+msgstr "Прямая ссылка"
 
 #: ../../../app/themes/Peafowl/views/image.php:291
 msgid "Thumbnail URL"
@@ -1515,50 +1479,11 @@ msgstr "Войти"
 msgid "Logged out"
 msgstr "Выход из системы"
 
-#: ../../../app/routes/route.page.php:61
-#: ../../../content/pages/default/contact.php:7
-msgid "General questions/comments"
-msgstr "Общие вопросы/комментарии"
+msgid "Upload images"
+msgstr "Загрузить изображения"
 
-#: ../../../app/routes/route.page.php:62
-#: ../../../content/pages/default/contact.php:8
-msgid "DMCA complaint"
-msgstr "DMCA жалоба"
-
-#: ../../../app/routes/route.page.php:71
-#: ../../../app/routes/route.settings.php:302
-#: ../../../content/pages/default/contact.php:19
-msgid "Invalid name"
-msgstr "Неверное имя"
-
-#: ../../../app/routes/route.page.php:74
-#: ../../../content/pages/default/contact.php:22
-msgid "Invalid message"
-msgstr "Неверное сообщение"
-
-#: ../../../app/routes/route.page.php:77
-#: ../../../content/pages/default/contact.php:25
-msgid "Invalid subject"
-msgstr "Неверная тема"
-
-#: ../../../app/routes/route.page.php:85
-#: ../../../content/pages/default/contact.php:33
-msgid "Invalid reCAPTCHA"
-msgstr "Неверная reCAPTCHA"
-
-#: ../../../app/routes/route.page.php:90
-#, php-format
-msgid "Can't submit the form: %s"
-msgstr "Не могу отправить форму: %s"
-
-#: ../../../app/routes/route.page.php:119
-msgid "Message sent. We will get in contact soon."
-msgstr "Сообщение успешно отправлено. Мы ответим на него в кратчайшие сроки."
-
-#: ../../../app/routes/route.page.php:122
-#: ../../../content/pages/default/contact.php:69
-msgid "Mail error"
-msgstr "Ошибка электронной почты"
+msgid "Upload plugin"
+msgstr "Загрузить плагин"
 
 #: ../../../app/routes/route.search.php:120
 #, php-format
@@ -1595,6 +1520,12 @@ msgstr "Неверный срок хранения изображения: %s"
 #, php-format
 msgid "An email has been sent to %s with instructions to activate this email"
 msgstr "На %s было отправлено сообщение с инструкциями по активации"
+
+#: ../../../app/routes/route.page.php:71
+#: ../../../app/routes/route.settings.php:302
+#: ../../../content/pages/default/contact.php:19
+msgid "Invalid name"
+msgstr "Неверное имя"
 
 #: ../../../app/routes/route.settings.php:305
 msgid "Invalid website"
@@ -1643,6 +1574,11 @@ msgstr "Для использования данного сайта вам до�
 #: ../../../app/themes/Peafowl/views/signup.php:63
 msgid "Create account"
 msgstr "Зарегистрироваться"
+
+#: ../../../app/themes/Peafowl/header.php:258
+#: ../../../app/themes/Peafowl/snippets/anywhere_upload.php:76
+msgid "Upload"
+msgstr "Загрузка"
 
 #: ../../../app/routes/route.user.php:84
 #: ../../../app/themes/Peafowl/header.php:56
@@ -1706,11 +1642,6 @@ msgstr "Случайное"
 #, php-format
 msgid "Notices (%s)"
 msgstr "Уведомления (%s)"
-
-#: ../../../app/themes/Peafowl/header.php:258
-#: ../../../app/themes/Peafowl/snippets/anywhere_upload.php:76
-msgid "Upload"
-msgstr "Загрузка"
 
 #: ../../../app/themes/Peafowl/header.php:281
 #: ../../../app/themes/Peafowl/snippets/modal_login.php:11
@@ -1915,26 +1846,32 @@ msgstr "добавить ссылки на изображения"
 msgid "You can also %i or %u."
 msgstr "Вы также можете %i или %u.\n"
 
+msgid "browse from your device"
+msgstr "обзор изображений с устройства"
+
 msgid "take a picture"
 msgstr "сделать фото"
+
+msgid "You can also %i, %c or %u."
+msgstr "Вы также можете %i, %c или %u."
 
 msgid "Edit or resize any image by clicking the image preview"
 msgstr "Нажмите на миниатюру, чтобы отредактировать изображение или изменить его размер"
 
-msgid "Edit or resize any image by touching the image preview"
-msgstr "Дотроньтесь до миниатюры, чтобы отредактировать изображение или изменить его размер"
+msgid "Edit any image by touching the image preview"
+msgstr "Отредактируйте изображение касанием окна предпросмотра."
 
 msgid "your computer"
 msgstr "вашего компьютера"
 
-msgid "image URLs"
-msgstr "ссылки на изображения"
-
-msgid "You can keep adding more images from %i or from %u."
+msgid "You can add more images from %i or %u."
 msgstr "Вы можете добавить изображения с %i или %u."
 
 msgid "your device"
 msgstr "вашего устройства"
+
+msgid "You can add more images from %i, %c or %u."
+msgstr "Вы можете добавить изображения с %i, %c или %u."
 
 msgid "Uploading %q %o"
 msgstr "Загружается %q %o"
@@ -2033,9 +1970,8 @@ msgstr "подробнее"
 msgid "Check the <a data-modal=\"simple\" data-target=\"failed-upload-result\">error report</a> for more information."
 msgstr "Проверьте <a data-modal=\"simple\" data-target=\"failed-upload-result\">отчет об ошибках</a> для получения более подробной информации."
 
-#: ../../../app/themes/Peafowl/snippets/anywhere_upload.php:89
-msgid "max"
-msgstr "макс."
+msgid "reset"
+msgstr "сброс"
 
 #: ../../../app/themes/Peafowl/snippets/anywhere_upload.php:91
 msgid "close"
@@ -2043,6 +1979,9 @@ msgstr "закрыть"
 
 msgid "copy"
 msgstr "копировать"
+
+msgid "insert"
+msgstr "вставить"
 
 #: ../../../app/themes/Peafowl/snippets/anywhere_upload.php:146
 #: ../../../app/themes/Peafowl/tpl_list_item/item_album_edit_tools.php:6
@@ -2599,9 +2538,6 @@ msgstr "Вы должны войти, чтобы использовать все
 msgid "There's nothing to show here."
 msgstr "Нет элементов для отображения."
 
-msgid "Upload images"
-msgstr "Загрузить изображения"
-
 #: ../../../app/themes/Peafowl/snippets/user_items_editor.php:16
 #: ../../../app/themes/Peafowl/views/image.php:69
 #: ../../../app/themes/Peafowl/views/image.php:457
@@ -2666,6 +2602,15 @@ msgstr "Вы действительно хотите удалить данное
 #: ../../../app/themes/Peafowl/snippets/user_items_editor.php:111
 msgid "Do you really want to remove all the selected content? This can't be undone."
 msgstr "Вы действительно хотите удалить выделенное содержимое? Это действие необратимо."
+
+#: ../../../app/themes/Peafowl/views/image.php:57
+msgid "Guest"
+msgstr "Гость"
+
+#: ../../../app/themes/Peafowl/views/image.php:85
+#: ../../../app/themes/Peafowl/views/image.php:86
+msgid "Like"
+msgstr "Нравится"
 
 msgid "Uploaded by guest"
 msgstr "Загружено гостем"
@@ -2779,6 +2724,20 @@ msgstr "Инструкции по сбросу пароля были оправ�
 msgid "Resend instructions"
 msgstr "Повторить отправку инструкций"
 
+#: ../../../app/install/update/updater.php:62
+#: ../../../app/themes/Peafowl/views/account/password-forgot.php:22
+#: ../../../app/lib/chevereto.js:1237 ../../../app/lib/chevereto.js:1313
+#: ../../../app/lib/chevereto.js:1391 ../../../app/lib/chevereto.js:1539
+#: ../../../app/lib/chevereto.js:1623 ../../../app/lib/chevereto.js:1668
+#: ../../../app/lib/chevereto.min.js:59 ../../../app/lib/chevereto.min.js:63
+#: ../../../app/lib/chevereto.min.js:67 ../../../app/lib/chevereto.min.js:70
+#: ../../../app/lib/chevereto.min.js:74 ../../../app/lib/chevereto.min.js:77
+#: ../../../lib/Peafowl/peafowl.js:2560 ../../../lib/Peafowl/peafowl.js:3096
+#: ../../../lib/Peafowl/peafowl.min.js:158
+#: ../../../lib/Peafowl/peafowl.min.js:195
+msgid "An error occurred. Please try again later."
+msgstr "В процессе выполнения произошла ошибка. Пожалуйста попробуйте позже."
+
 #: ../../../app/themes/Peafowl/views/account/password-forgot.php:24
 msgid "A previous email has been sent with instructions to reset your password. If you did not receive the instructions try checking your junk or spam filters."
 msgstr "Вам уже было отправлено сообщение с инструкциями по сбросу пароля. Если вы не получили сообщения, проверьте папку Спам."
@@ -2862,11 +2821,6 @@ msgstr "Удалить"
 msgid "You like this"
 msgstr "Вам это нравится"
 
-#: ../../../app/themes/Peafowl/views/image.php:85
-#: ../../../app/themes/Peafowl/views/image.php:86
-msgid "Like"
-msgstr "Нравится"
-
 msgid "Upload to album"
 msgstr "Загрузить в альбом"
 
@@ -2948,10 +2902,6 @@ msgstr "Заголовок сайта"
 #: ../../../app/themes/Peafowl/views/dashboard.php:231
 msgid "Website description"
 msgstr "Описание сайта"
-
-#: ../../../app/themes/Peafowl/views/dashboard.php:236
-msgid "Website keywords"
-msgstr "Ключевые слова"
 
 #: ../../../app/themes/Peafowl/views/dashboard.php:257
 msgid "Default time zone"
@@ -3495,6 +3445,12 @@ msgstr "Включить регистрацию"
 #: ../../../app/themes/Peafowl/views/dashboard.php:965
 msgid "Enable this if you want to allow users to signup."
 msgstr "Включите, чтобы разрешить регистрацию пользователей."
+
+msgid "Enable user content delete"
+msgstr "Разрешить пользователям удаление содержимого"
+
+msgid "Enable this if you want to allow users to delete their own content. This setting doesn't affect administrators."
+msgstr "Включите, чтобы позволить пользователям удалять свое содержимое. Эта настройка не влияет на администраторов."
 
 msgid "Minimum age required"
 msgstr "Минимальный возраст посетителя"
@@ -4330,6 +4286,16 @@ msgstr "Ключ API v1"
 msgid "Use this key when using the <a %s>API v1</a>."
 msgstr "Используйте этот ключ с <a %s>API v1</a>."
 
+msgid "Plugin route"
+msgstr "Маршрут плагина"
+
+#, php-format
+msgid "Enable this to display plugin instructions at %u. A link to these instructions will be added to the %s menu. This setting doesn't affect administrators."
+msgstr "Включите, чтобы показывать инструкцию по использованию плагина в %u. Ссылка на них будет добавлена в меню %s. Эта настройка не влияет на администраторов."
+
+msgid "Use this to set a custom URL for %p. Please note that you need to manually replicate %s in this URL."
+msgstr "Установите собственный адрес для %p. Вам необходимо будет вручную указать в этом адресе %s."
+
 #: ../../../app/themes/Peafowl/views/dashboard.php:2028
 msgid "Cookie law compliance"
 msgstr "Соответствие закону Евросоюза о cookies"
@@ -4354,10 +4320,6 @@ msgstr "Воспроизвести GIF"
 
 msgid "Load full resolution"
 msgstr "Загрузить полную версию"
-
-#: ../../../app/themes/Peafowl/views/image.php:57
-msgid "Guest"
-msgstr "Гость"
 
 #: ../../../app/themes/Peafowl/views/image.php:136
 msgid "Added to %a and categorized in %c"
@@ -4452,6 +4414,66 @@ msgstr "Пожалуйста, введите пароль и нажмите Ente
 
 msgid "Send"
 msgstr "Отправить"
+
+msgid "Add image uploading to your website, blog or forum by installing our upload plugin. It provides image uploading to any website by placing a button that will allow your users to directly upload images to our service and it will automatically handle the codes needed for insertion. All features included like drag and drop, remote upload, image resizing and more."
+msgstr "Добавьте возможность загружать изображение на ваш сайт, блог или форум установив наш плагин. Он предоставляет возможность загружать изображение путем установки кнопки, которая позволит вашим пользователям напрямую загружать изображения на наш сервис и автоматически предоставит коды для вставки. Плагин включает все возможности, такие как загрузка через перетаскивание, удаленная загрузка, изменение размера изображений и другие."
+
+msgid "Supported software"
+msgstr "Поддерживаемое ПО"
+
+msgid "supported software"
+msgstr "поддерживаемое ПО"
+
+#, php-format
+msgid "The plugin works in any website with user-editable content and for %sv, it will place an upload button that will match the target editor toolbar so no extra customization is needed."
+msgstr "Плагин работает на любом сайте с редактируемым содержимым и для %s, он размещает кнопку рядом с панелью управления редактором, что позволит избежать необходимости внесения дополнительных изменений."
+
+msgid "Add it to your website"
+msgstr "Добавить на сайт"
+
+msgid "options"
+msgstr "настройки"
+
+#, php-format
+msgid "Copy and paste the plugin code into your website HTML code (preferably inside the head section). There are plenty %o to make it fit better to your needs."
+msgstr "Вставьте код плагина в HTML-код вашего сайта (желательно в раздел head). Плагин имеет множество %o для лучшей интеграции с вашим сайтом."
+
+msgid "Basic options"
+msgstr "Основные настройки"
+
+msgid "Color palette"
+msgstr "Палитра цветов"
+
+msgid "Button color scheme"
+msgstr "Цветовая схема кнопки"
+
+msgid "Embed codes that will be auto-inserted in editor box"
+msgstr "Коды для встраивания, которые будут автоматически вставлены в редактор"
+
+msgid "Sibling selector"
+msgstr "Селектор элемента"
+
+msgid "Sibling element selector where to place the button next to"
+msgstr "Селектор элемента, рядом с котором будет размещена кнопка"
+
+msgid "Sibling position"
+msgstr "Позиция элемента"
+
+msgid "After"
+msgstr "После"
+
+msgid "Before"
+msgstr "Перед"
+
+msgid "Position relative to sibling element"
+msgstr "Позиция относительно элемента"
+
+msgid "Advanced options"
+msgstr "Дополнительные настройки"
+
+#, php-format
+msgid "The plugin has a large set of additional options that allow full customization. You can use custom HTML, CSS, own color palette, set observers and more. Check the %d and the plugin source to get a better idea of these advanced options."
+msgstr "Плагин имеет большое число дополнительных настроек позволяющих осуществить бесшовную интеграцию с вашим проектом. Вы можете задать собственный HTML, CSS, собственную палитру цветов, устанавливать наблюдатели за изменениями и многое другое. Более подробную информацию об этих дополнительных настройках вы можете посмотреть в исходном коде плагина или в %d."
 
 #: ../../../app/themes/Peafowl/views/request-denied.php:12
 msgid "You either don't have permission to access this page or the link has expired."
@@ -4689,11 +4711,45 @@ msgstr[2] "Подписчиков"
 msgid "Follow"
 msgstr "Подписаться"
 
+#: ../../../app/routes/route.page.php:61
+#: ../../../content/pages/default/contact.php:7
+msgid "General questions/comments"
+msgstr "Общие вопросы/комментарии"
+
+#: ../../../app/routes/route.page.php:62
+#: ../../../content/pages/default/contact.php:8
+msgid "DMCA complaint"
+msgstr "DMCA жалоба"
+
+#: ../../../app/routes/route.page.php:74
+#: ../../../content/pages/default/contact.php:22
+msgid "Invalid message"
+msgstr "Неверное сообщение"
+
+#: ../../../app/routes/route.page.php:77
+#: ../../../content/pages/default/contact.php:25
+msgid "Invalid subject"
+msgstr "Неверная тема"
+
+#: ../../../app/routes/route.page.php:85
+#: ../../../content/pages/default/contact.php:33
+msgid "Invalid reCAPTCHA"
+msgstr "Неверная reCAPTCHA"
+
+#: ../../../app/routes/route.page.php:122
+#: ../../../content/pages/default/contact.php:69
+msgid "Mail error"
+msgstr "Ошибка электронной почты"
+
 msgid "Message sent"
 msgstr "Сообщение отправлено"
 
 msgid "Contact"
 msgstr "Обратная связь"
+
+#: ../../../app/routes/route.page.php:119
+msgid "Message sent. We will get in contact soon."
+msgstr "Сообщение успешно отправлено. Мы ответим на него в кратчайшие сроки."
 
 msgid "If you want to send a message fill the form below."
 msgstr "Заполните форму, если Вы хотите отправить сообщение."
@@ -4828,6 +4884,15 @@ msgstr "Обновить"
 #, javascript-format
 msgid "This website is running latest %s version"
 msgstr "Вы используете последнюю версию Chevereto - %s"
+
+msgid "Toggle select"
+msgstr "выбранное"
+
+msgid "Previous"
+msgstr "Предыдущая"
+
+msgid "Next"
+msgstr "Следующая"
 
 #: ../../../app/lib/chevereto.js:2112 ../../../app/lib/chevereto.min.js:101
 msgid "Clipboard image"

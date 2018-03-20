@@ -63,36 +63,33 @@ try {
 					]), TRUE);
                     $json_array['success'] = ['message' => 'OK']; // "success" is a Chevereto internal thing
                 } catch(Exception $e) {
-                    throw new Exception(_s("An error occurred. Please try again later."), 400);
+                    throw new Exception(sprintf('Fatal error: %s', $e->getMessage()) , 400);
                 }
             break;
             case 'download':
                 try {
-                    $version = $_REQUEST['version'];                    
-					$context = stream_context_create([
-						'http'=> [
-							'method' => 'GET',
-							'header' => "User-agent: " . G_APP_GITHUB_REPO . "\r\n"
-							]
-						]);
-					$download = @file_get_contents('https://api.github.com/repos/' . G_APP_GITHUB_OWNER . '/' . G_APP_GITHUB_REPO . '/zipball/'.$version, FALSE, $context);
-					if($download === FALSE) {
-						throw new Exception(sprintf("Can't fetch " . G_APP_NAME . " v%s from GitHub", $version), 400);
-					}
-					$github_json = json_decode($download, TRUE);
-                    if(json_last_error() == JSON_ERROR_NONE) {
-                        throw new Exception("Can't proceed with update procedure");
+                    $version = $_REQUEST['version'] ?: 'latest';
+                    $zip_local_filename = 'chevereto_' . $version . '_' . G\random_string(24) . '.zip';
+                    $license_file = G_APP_PATH . 'license/key.php';
+                    
+                    if(!is_readable($license_file)) {
+                        throw new Exception(_s('Missing %s file'), G\absolute_to_relative($license_file));
+                    }
+                    
+                    @include_once($license_file);
+                    
+                    if(empty($license)) {
+                        throw new Exception(_s('Invalid license info'), G\absolute_to_relative($license_file));
+                    }
+					
+					// Note: This stuff retuns inline file OR json response
+                    $download = G\fetch_url($CHEVERETO['api']['download'] . '/' . $version . '/?license=' . $license, FALSE, [
+						CURLOPT_REFERER => G\get_base_url()
+					]);
+                    $json_decode = json_decode($download);
+                    if(json_last_error() == JSON_ERROR_NONE) { // json return means no inline download
+                        throw new Exception(_s('Invalid license key'));
                     } else {
-						// Get Content-Disposition header from GitHub
-						foreach($http_response_header as $header) {
-							if(preg_match('/^Content-Disposition:.*filename=(.*)$/i', $header, $matches)) {
-								$zip_local_filename = G\str_replace_last('.zip', '_' . G\random_string(24) . '.zip', $matches[1]);
-								break;
-							}
-						}
-						if(!isset($zip_local_filename)) {
-							throw new Exception("Can't grab content-disposition header from GitHub");
-						}
                         if(file_put_contents($update_temp_dir . $zip_local_filename, $download) === FALSE) {
                             throw new Exception(_s("Can't save file"));
                         }
@@ -113,14 +110,6 @@ try {
             break;
             case 'extract':
                 $zip_file = $update_temp_dir . $_REQUEST['file'];
-				
-				if(FALSE === preg_match('/^Chevereto-Chevereto-Free-([\d.]+)-\d+-g(.*)_.*$/', $_REQUEST['file'], $matches)) {
-					throw new Exception("Can't detect target zip file version");
-				}
-				
-				$version = $matches[1];
-				$etag_short = $matches[2];
-				
                 // Test .zip
                 if(!is_readable($zip_file)) {
                     throw new Exception('Missing '.$zip_file.' file', 400);
@@ -145,7 +134,7 @@ try {
                 }
 
                 // Recursive copy UPDATE -> CURRENT
-                $source = $update_temp_dir . G_APP_GITHUB_OWNER . '-' . G_APP_GITHUB_REPO . '-' . $etag_short . '/';
+                $source = $update_temp_dir . 'chevereto/';
                 $dest = G_ROOT_PATH;
                 foreach ($iterator = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($source, \RecursiveDirectoryIterator::SKIP_DOTS), \RecursiveIteratorIterator::SELF_FIRST) as $item) {
 							
